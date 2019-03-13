@@ -22,6 +22,7 @@ class BottomMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         contentTable.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         contentTable.separatorStyle = .none
         // Do any additional setup after loading the view.
+
     }
     
 
@@ -36,6 +37,7 @@ extension BottomMenuVC{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! BottomTableCell
@@ -45,7 +47,15 @@ extension BottomMenuVC{
         cell.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var cell = tableView.cellForRow(at: indexPath) as! BottomTableCell
+        cell.typeLabel.textColor = UIColor.acmGreen()
+        print(cell.typeLabel.text)
+        
     }
 }

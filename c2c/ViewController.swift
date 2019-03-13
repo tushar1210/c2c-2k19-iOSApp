@@ -50,3 +50,8 @@ class ViewController: UIViewController {
     }
 }
 
+extension UIColor{
+    class func acmGreen() -> UIColor{
+        return UIColor(red: 57/255, green: 199/257, blue: 157/255, alpha: 1)
+    }
+}

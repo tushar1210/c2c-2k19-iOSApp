@@ -27,7 +27,8 @@ class PrizesVC: UIViewController {
         second.textColor = .white
         third.textColor = .white
         UI.textColor = .white
-        
+        bottomView.backgroundColor = UIColor.acmGreen()
+        bottomView.layer.cornerRadius = 20
     }
     
     @objc func handleTap() {
