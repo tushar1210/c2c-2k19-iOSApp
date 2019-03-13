@@ -6,5 +6,8 @@ target 'c2c' do
   use_frameworks!
 
   # Pods for c2c
-
+pod 'Firebase/Core'
+pod 'Firebase/Database'
+pod 'Bottomsheet'
+pod 'BottomPopup'
 end
