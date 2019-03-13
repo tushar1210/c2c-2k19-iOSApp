@@ -27,7 +27,6 @@ class PrizesVC: UIViewController {
         second.textColor = .white
         third.textColor = .white
         UI.textColor = .white
-       // bottomView.addGestureRecognizer(tap)
         
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED07D22398A0100B7C84C /* BottomCardSegue.swift */; };
 		784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED07F223993A000B7C84C /* BottomMenuVC.swift */; };
+		784ED08222399DFD00B7C84C /* BottomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED08122399DFD00B7C84C /* BottomTableCell.swift */; };
 		78639DC122393C44006E916E /* PrizesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78639DC022393C44006E916E /* PrizesVC.swift */; };
 		7868A6B72237DEF30048F21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868A6B62237DEF30048F21B /* AppDelegate.swift */; };
 		7868A6B92237DEF30048F21B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868A6B82237DEF30048F21B /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 		547AD9AE6E277C03FC68E221 /* Pods-c2c.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-c2c.release.xcconfig"; path = "Pods/Target Support Files/Pods-c2c/Pods-c2c.release.xcconfig"; sourceTree = "<group>"; };
 		784ED07D22398A0100B7C84C /* BottomCardSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSegue.swift; sourceTree = "<group>"; };
 		784ED07F223993A000B7C84C /* BottomMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuVC.swift; sourceTree = "<group>"; };
+		784ED08122399DFD00B7C84C /* BottomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTableCell.swift; sourceTree = "<group>"; };
 		78639DC022393C44006E916E /* PrizesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizesVC.swift; sourceTree = "<group>"; };
 		7868A6B32237DEF30048F21B /* c2c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = c2c.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7868A6B62237DEF30048F21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				7868A6B62237DEF30048F21B /* AppDelegate.swift */,
 				7868A6B82237DEF30048F21B /* ViewController.swift */,
 				7868A6BA2237DEF30048F21B /* Main.storyboard */,
+				784ED08122399DFD00B7C84C /* BottomTableCell.swift */,
 				784ED07F223993A000B7C84C /* BottomMenuVC.swift */,
 				78639DC022393C44006E916E /* PrizesVC.swift */,
 				784ED07D22398A0100B7C84C /* BottomCardSegue.swift */,
@@ -238,6 +241,7 @@
 				784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */,
 				784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */,
 				7868A6B92237DEF30048F21B /* ViewController.swift in Sources */,
+				784ED08222399DFD00B7C84C /* BottomTableCell.swift in Sources */,
 				7868A6B72237DEF30048F21B /* AppDelegate.swift in Sources */,
 				78639DC122393C44006E916E /* PrizesVC.swift in Sources */,
 			);
