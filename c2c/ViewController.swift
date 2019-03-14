@@ -5,7 +5,7 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    @IBOutlet weak var touchView: UIView!
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -16,8 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        touchView.addGestureRecognizer(viewTap)
-        touchView.isHidden=true
+        
         emailTextField.layer.borderWidth = 1.0
         emailTextField.layer.borderColor = UIColor(red: 57/255, green: 199/257, blue: 157/255, alpha: 1).cgColor
         emailTextField.frame.size.height = 45

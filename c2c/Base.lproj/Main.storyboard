@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NBD-Xo-cYp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytW-yb-K6j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ytW-yb-K6j">
                                 <rect key="frame" x="141" y="168" width="98" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
@@ -62,6 +62,7 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UWQ-Fi-TZV"/>
+                                    <segue destination="H9Q-yr-tIp" kind="show" id="sTw-P6-xqG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="246" y="-1069"/>
         </scene>
         <!--PrizesVC-->
         <scene sceneID="fPf-fQ-dVk">
@@ -96,9 +97,9 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Prizes">
                                         <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="32" name="GoogleSans-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -308,6 +309,7 @@
                     <connections>
                         <outlet property="UI" destination="3wu-ih-TrU" id="IhS-Hc-WOz"/>
                         <outlet property="bottomView" destination="ejh-zQ-pkz" id="weI-sJ-Ya9"/>
+                        <outlet property="prizeLabel" destination="vXM-EZ-Lvp" id="Bml-tV-wI0"/>
                         <outlet property="second" destination="fUH-Kj-Cw5" id="ZPM-hj-Afg"/>
                         <outlet property="third" destination="gEJ-2y-XMG" id="amq-jl-abc"/>
                         <outlet property="winnerLabel" destination="VsN-zF-gd2" id="reC-5q-A7x"/>
@@ -316,7 +318,87 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afA-2d-F5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1237.5999999999999" y="-278.41079460269867"/>
+            <point key="canvasLocation" x="1964" y="-1069"/>
+        </scene>
+        <!--AlertsVC-->
+        <scene sceneID="5dW-qA-waV">
+            <objects>
+                <viewController storyboardIdentifier="Alerts" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sax-FB-1K0" customClass="AlertsVC" customModule="c2c" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vfa-0u-UZd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa2-BK-FsB">
+                                <rect key="frame" x="1" y="618" width="375" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmM-5G-IY2">
+                                <rect key="frame" x="120" y="60" width="137" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Alerts">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="32" name="GoogleSans-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="OEQ-GD-0Jy"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomView" destination="Xa2-BK-FsB" id="tST-e3-ZuQ"/>
+                        <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="7i8-oL-PGx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3LI-So-6wA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2736" y="-1072"/>
+        </scene>
+        <!--SponsorsVC-->
+        <scene sceneID="wcI-Fs-o65">
+            <objects>
+                <viewController storyboardIdentifier="Sponsors" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kNs-CI-CSR" customClass="SponsorsVC" customModule="c2c" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ufy-Sf-X5F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pb5-w6-WBR">
+                                <rect key="frame" x="112" y="67" width="150" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Sponsors">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="32" name="GoogleSans-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qts-hQ-7E1">
+                                <rect key="frame" x="0.0" y="618" width="375" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="p92-JZ-fnQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomView" destination="qts-hQ-7E1" id="Xwh-rz-kp7"/>
+                        <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="CYZ-4w-JpA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMc-Dp-rFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3613" y="-1070"/>
         </scene>
         <!--BottomMenu-->
         <scene sceneID="s7P-go-yKG">
@@ -378,7 +460,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztd-pp-VE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085.5999999999999" y="-278.41079460269867"/>
+            <point key="canvasLocation" x="1964" y="-242"/>
+        </scene>
+        <!--AgendaVC-->
+        <scene sceneID="drc-ik-GJz">
+            <objects>
+                <viewController storyboardIdentifier="Agenda" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H9Q-yr-tIp" customClass="AgendaVC" customModule="c2c" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TKU-OB-LgY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCL-mh-ITT">
+                                <rect key="frame" x="119" y="56" width="137" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Agenda">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" size="32" name="GoogleSans-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2A-Bn-X4i">
+                                <rect key="frame" x="0.0" y="618" width="375" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="TNd-Xp-1Wg"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomView" destination="l2A-Bn-X4i" id="pNt-JE-46h"/>
+                        <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="ayn-7t-hTU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="itS-vE-Xb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="-1069"/>
         </scene>
     </scenes>
     <resources>
@@ -388,4 +510,7 @@
         <image name="gold-medal-2" width="50" height="59.5"/>
         <image name="ux-design" width="50" height="47"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CYZ-4w-JpA"/>
+    </inferredMetricsTieBreakers>
 </document>

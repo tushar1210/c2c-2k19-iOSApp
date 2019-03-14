@@ -30,6 +30,7 @@ class BottomMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBAction func downButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        var a = PrizesVC()
     }
 }
 
@@ -56,6 +57,8 @@ extension BottomMenuVC{
         var cell = tableView.cellForRow(at: indexPath) as! BottomTableCell
         cell.typeLabel.textColor = UIColor.acmGreen()
         print(cell.typeLabel.text)
+        let vc = storyboard!.instantiateViewController(withIdentifier: cell.typeLabel.text!)
+        present(vc, animated: true, completion: nil)
         
     }
 }
