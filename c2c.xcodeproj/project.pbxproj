@@ -16,6 +16,7 @@
 		785C012C223A28F400051E85 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C012B223A28F400051E85 /* AboutVC.swift */; };
 		785C012E223A290B00051E85 /* FAQsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C012D223A290B00051E85 /* FAQsVC.swift */; };
 		785C0130223A293E00051E85 /* FoodCoupons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C012F223A293E00051E85 /* FoodCoupons.swift */; };
+		785C0138223A411D00051E85 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C0137223A411D00051E85 /* AlertCell.swift */; };
 		78639DC122393C44006E916E /* PrizesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78639DC022393C44006E916E /* PrizesVC.swift */; };
 		7868A6B72237DEF30048F21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868A6B62237DEF30048F21B /* AppDelegate.swift */; };
 		7868A6B92237DEF30048F21B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7868A6B82237DEF30048F21B /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		785C012B223A28F400051E85 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		785C012D223A290B00051E85 /* FAQsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsVC.swift; sourceTree = "<group>"; };
 		785C012F223A293E00051E85 /* FoodCoupons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCoupons.swift; sourceTree = "<group>"; };
+		785C0137223A411D00051E85 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertCell.swift; path = /Users/tushar/Desktop/c2c/c2c/View/AlertCell.swift; sourceTree = "<absolute>"; };
 		78639DC022393C44006E916E /* PrizesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizesVC.swift; sourceTree = "<group>"; };
 		7868A6B32237DEF30048F21B /* c2c.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = c2c.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7868A6B62237DEF30048F21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,14 +77,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		785C0135223A3FDB00051E85 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				785C0127223A209700051E85 /* AlertsVC.swift */,
+				785C012B223A28F400051E85 /* AboutVC.swift */,
+				784ED083223A042100B7C84C /* AgendaVC.swift */,
+				784ED07F223993A000B7C84C /* BottomMenuVC.swift */,
+				785C012D223A290B00051E85 /* FAQsVC.swift */,
+				785C012F223A293E00051E85 /* FoodCoupons.swift */,
+				78639DC022393C44006E916E /* PrizesVC.swift */,
+				785C0129223A24DC00051E85 /* SponsorsVC.swift */,
+				7868A6B82237DEF30048F21B /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		785C0136223A40EF00051E85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				784ED08122399DFD00B7C84C /* BottomTableCell.swift */,
+				784ED07D22398A0100B7C84C /* BottomCardSegue.swift */,
+				785C0137223A411D00051E85 /* AlertCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7868A6AA2237DEF30048F21B = {
 			isa = PBXGroup;
 			children = (
-				785C0129223A24DC00051E85 /* SponsorsVC.swift */,
-				785C012B223A28F400051E85 /* AboutVC.swift */,
-				785C012D223A290B00051E85 /* FAQsVC.swift */,
-				785C012F223A293E00051E85 /* FoodCoupons.swift */,
-				785C0127223A209700051E85 /* AlertsVC.swift */,
 				7868A6B52237DEF30048F21B /* c2c */,
 				7868A6B42237DEF30048F21B /* Products */,
 				0FAA51FFEDEA45621DB6F1F7 /* Pods */,
@@ -102,12 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				7868A6B62237DEF30048F21B /* AppDelegate.swift */,
-				7868A6B82237DEF30048F21B /* ViewController.swift */,
-				784ED083223A042100B7C84C /* AgendaVC.swift */,
-				784ED08122399DFD00B7C84C /* BottomTableCell.swift */,
-				784ED07F223993A000B7C84C /* BottomMenuVC.swift */,
-				78639DC022393C44006E916E /* PrizesVC.swift */,
-				784ED07D22398A0100B7C84C /* BottomCardSegue.swift */,
+				785C0135223A3FDB00051E85 /* Controller */,
+				785C0136223A40EF00051E85 /* View */,
 				7868A6BD2237DEF90048F21B /* Assets.xcassets */,
 				7868A6BF2237DEF90048F21B /* LaunchScreen.storyboard */,
 				7868A6BA2237DEF30048F21B /* Main.storyboard */,
@@ -256,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785C0138223A411D00051E85 /* AlertCell.swift in Sources */,
 				784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */,
 				785C012E223A290B00051E85 /* FAQsVC.swift in Sources */,
 				784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */,

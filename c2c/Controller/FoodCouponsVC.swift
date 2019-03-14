@@ -1,5 +1,5 @@
 //
-//  AboutVC.swift
+//  FoodCouponsVC.swift
 //  c2c
 //
 //  Created by Tushar Singh on 14/03/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutVC: UIViewController {
+class FoodCouponsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  AlertsVC.swift
+//  AgendaVC.swift
 //  c2c
 //
 //  Created by Tushar Singh on 14/03/19.
@@ -8,21 +8,20 @@
 
 import UIKit
 
-class AlertsVC: UIViewController {
+class AgendaVC: UIViewController {
 
     @IBOutlet weak var bottomView: UIView!
-    
+    @IBOutlet weak var menuIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        bottomView.addGestureRecognizer(tapGesture)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        menuIcon.isUserInteractionEnabled = true
+        menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
         bottomView.layer.cornerRadius = 20
-
     }
-    
-
 
     @objc func handleTap() {
         print("tapped")
@@ -32,4 +31,5 @@ class AlertsVC: UIViewController {
         segue.perform()
         
     }
+
 }

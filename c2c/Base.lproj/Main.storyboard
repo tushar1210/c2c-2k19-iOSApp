@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sax-FB-1K0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -272,6 +272,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ejh-zQ-pkz">
                                 <rect key="frame" x="0.0" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="WBh-kI-eMh">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-r3-adf">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="ShW-xx-hrI">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -309,6 +323,7 @@
                     <connections>
                         <outlet property="UI" destination="3wu-ih-TrU" id="IhS-Hc-WOz"/>
                         <outlet property="bottomView" destination="ejh-zQ-pkz" id="weI-sJ-Ya9"/>
+                        <outlet property="menuIcon" destination="WBh-kI-eMh" id="FoK-3X-eSA"/>
                         <outlet property="prizeLabel" destination="vXM-EZ-Lvp" id="Bml-tV-wI0"/>
                         <outlet property="second" destination="fUH-Kj-Cw5" id="ZPM-hj-Afg"/>
                         <outlet property="third" destination="gEJ-2y-XMG" id="amq-jl-abc"/>
@@ -318,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afA-2d-F5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="-1069"/>
+            <point key="canvasLocation" x="2080.8000000000002" y="-1069.1154422788607"/>
         </scene>
         <!--AlertsVC-->
         <scene sceneID="5dW-qA-waV">
@@ -331,6 +346,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xa2-BK-FsB">
                                 <rect key="frame" x="1" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-eJ-f6B">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Qxy-ag-Hoy">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="bzs-nA-0fp">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmM-5G-IY2">
@@ -347,18 +376,64 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qli-42-8dt">
+                                <rect key="frame" x="16" y="163" width="343" height="447"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alertCell" rowHeight="100" id="dJE-Mj-TqC" customClass="AlertCell" customModule="c2c" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dJE-Mj-TqC" id="MzO-SZ-eLm">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLN-AI-KbX">
+                                                    <rect key="frame" x="15" y="11" width="131" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpk-mb-35F">
+                                                    <rect key="frame" x="15" y="40" width="313" height="49"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK5-58-Luh">
+                                                    <rect key="frame" x="286" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationBody" destination="Kpk-mb-35F" id="ZfQ-A1-fdf"/>
+                                            <outlet property="notificationHeading" destination="HLN-AI-KbX" id="QE9-Cy-Bxl"/>
+                                            <outlet property="timeLabel" destination="cK5-58-Luh" id="0bW-AA-5xp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="OEQ-GD-0Jy"/>
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="Xa2-BK-FsB" id="tST-e3-ZuQ"/>
+                        <outlet property="contentTableView" destination="qli-42-8dt" id="syw-z1-oU2"/>
+                        <outlet property="menuIcon" destination="Mfo-eJ-f6B" id="8OU-uL-Ivd"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="7i8-oL-PGx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3LI-So-6wA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2736" y="-1072"/>
+            <point key="canvasLocation" x="2735.1999999999998" y="-1072.7136431784108"/>
         </scene>
         <!--SponsorsVC-->
         <scene sceneID="wcI-Fs-o65">
@@ -385,6 +460,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qts-hQ-7E1">
                                 <rect key="frame" x="0.0" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="c8m-k5-1NV">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Vnu-DR-Rce">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="DIq-E3-tKn">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -393,6 +482,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="qts-hQ-7E1" id="Xwh-rz-kp7"/>
+                        <outlet property="menuIcon" destination="c8m-k5-1NV" id="mPB-Tb-sCk"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="CYZ-4w-JpA"/>
                     </connections>
                 </viewController>
@@ -400,10 +490,10 @@
             </objects>
             <point key="canvasLocation" x="3394" y="-1073"/>
         </scene>
-        <!--View Controller-->
+        <!--AboutVC-->
         <scene sceneID="bbQ-dU-6KQ">
             <objects>
-                <viewController id="miS-wJ-9n6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="About" useStoryboardIdentifierAsRestorationIdentifier="YES" id="miS-wJ-9n6" customClass="AboutVC" customModule="c2c" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cc5-SX-POP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,6 +501,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ke-Ze-ldg">
                                 <rect key="frame" x="0.0" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="HSk-gB-ogP">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-cq-yPw">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="MKF-QC-n4F">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynh-UL-czx">
@@ -432,6 +536,8 @@
                         <viewLayoutGuide key="safeArea" id="gWe-Gu-3yO"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="2ke-Ze-ldg" id="1Ag-R2-WzW"/>
+                        <outlet property="menuIcon" destination="HSk-gB-ogP" id="TWx-vf-egi"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="tSV-Sr-sax"/>
                     </connections>
                 </viewController>
@@ -526,6 +632,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2A-Bn-X4i">
                                 <rect key="frame" x="0.0" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Urn-tr-D7n">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="l0k-X3-7R4">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="Qgg-Oz-924">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -534,6 +654,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomView" destination="l2A-Bn-X4i" id="pNt-JE-46h"/>
+                        <outlet property="menuIcon" destination="Urn-tr-D7n" id="VVc-nT-Vn0"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="ayn-7t-hTU"/>
                     </connections>
                 </viewController>
@@ -541,10 +662,10 @@
             </objects>
             <point key="canvasLocation" x="1436" y="-1069"/>
         </scene>
-        <!--View Controller-->
+        <!--QsVC-->
         <scene sceneID="9vu-24-69F">
             <objects>
-                <viewController id="vPM-Rs-iXN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FAQs" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vPM-Rs-iXN" customClass="FAQsVC" customModule="c2c" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xzx-dW-1j2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -552,6 +673,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nnQ-fb-h4x">
                                 <rect key="frame" x="0.0" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="NbD-jF-XYY">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="sAv-f0-Fkq">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="iK3-43-mys">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-X8-6Uf">
@@ -573,6 +708,8 @@
                         <viewLayoutGuide key="safeArea" id="V6K-2s-vSl"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="nnQ-fb-h4x" id="6YO-H2-NqJ"/>
+                        <outlet property="menuIcon" destination="NbD-jF-XYY" id="Le3-eM-YA7"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="B4o-t5-jWk"/>
                     </connections>
                 </viewController>
@@ -580,10 +717,10 @@
             </objects>
             <point key="canvasLocation" x="4695" y="-1069"/>
         </scene>
-        <!--View Controller-->
+        <!--Food CouponsVC-->
         <scene sceneID="z9R-vu-2VG">
             <objects>
-                <viewController id="t9s-bf-DP9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Food Coupons" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t9s-bf-DP9" customClass="FoodCouponsVC" customModule="c2c" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="13N-aY-MPA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -591,6 +728,20 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khW-U6-ggy">
                                 <rect key="frame" x="0.0" y="618" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-Ao-tgn">
+                                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="six-V5-uKd">
+                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="cts-8y-gtZ">
+                                        <rect key="frame" x="349" y="17" width="4" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g83-c7-bGi">
@@ -612,6 +763,8 @@
                         <viewLayoutGuide key="safeArea" id="TNe-3B-b65"/>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="khW-U6-ggy" id="Lpr-sz-C3p"/>
+                        <outlet property="menuIcon" destination="aXo-Ao-tgn" id="3fc-Cy-IEN"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="WpZ-E2-wFh"/>
                     </connections>
                 </viewController>
@@ -621,6 +774,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon - Menu - Filled" width="24" height="24"/>
+        <image name="Icon - Search - Filled" width="24" height="24"/>
+        <image name="Union 1" width="4" height="16"/>
         <image name="crossMenu" width="24" height="24"/>
         <image name="gold-medal" width="50" height="59.5"/>
         <image name="gold-medal-1" width="50" height="59.5"/>
@@ -628,6 +784,6 @@
         <image name="ux-design" width="50" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WpZ-E2-wFh"/>
+        <segue reference="7i8-oL-PGx"/>
     </inferredMetricsTieBreakers>
 </document>

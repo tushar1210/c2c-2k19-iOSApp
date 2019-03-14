@@ -1,5 +1,5 @@
 //
-//  SponsorsVC.swift
+//  AboutVC.swift
 //  c2c
 //
 //  Created by Tushar Singh on 14/03/19.
@@ -8,22 +8,23 @@
 
 import UIKit
 
-class SponsorsVC: UIViewController {
+class AboutVC: UIViewController {
 
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var menuIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        bottomView.addGestureRecognizer(tapGesture)
+        menuIcon.isUserInteractionEnabled = true
+        menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
         bottomView.layer.cornerRadius = 20
         
-
-        // Do any additional setup after loading the view.
     }
     
-
+    
+    
     @objc func handleTap() {
         print("tapped")
         let childVC = storyboard!.instantiateViewController(withIdentifier: "BottomMenu")
@@ -32,5 +33,8 @@ class SponsorsVC: UIViewController {
         segue.perform()
         
     }
+
+
+   
 
 }
