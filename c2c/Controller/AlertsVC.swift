@@ -41,17 +41,29 @@ class AlertsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 }
 
 extension AlertsVC{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        
+        v.backgroundColor = .clear
+        return v
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath) as! AlertCell
+        cell.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         cell.timeLabel.text = "2:00 PM"
         cell.notificationHeading.text = "Notification"
         cell.notificationBody.text="Snacks Served ! "
         cell.notificationBody.backgroundColor = .clear
-        
+        cell.layer.cornerRadius = 10
         return cell
     }
     

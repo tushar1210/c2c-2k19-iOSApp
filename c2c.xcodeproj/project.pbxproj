@@ -23,6 +23,8 @@
 		7868A6BC2237DEF30048F21B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7868A6BA2237DEF30048F21B /* Main.storyboard */; };
 		7868A6BE2237DEF90048F21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7868A6BD2237DEF90048F21B /* Assets.xcassets */; };
 		7868A6C12237DEF90048F21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7868A6BF2237DEF90048F21B /* LaunchScreen.storyboard */; };
+		788C5538223BBE3400AFD008 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C5537223BBE3400AFD008 /* FoodTableViewCell.swift */; };
+		788C553A223CDA9E00AFD008 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C5539223CDA9E00AFD008 /* AlertCell.swift */; };
 		979626971C3006AA5BD9CB24 /* Pods_c2c.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DBDB332790C1B629C5099 /* Pods_c2c.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		7868A6CC2237E0B20048F21B /* GoogleSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-Italic.ttf"; sourceTree = "<group>"; };
 		7868A6CD2237E0B20048F21B /* GoogleSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		7868A6CE2237E0B30048F21B /* GoogleSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GoogleSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		788C5537223BBE3400AFD008 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
+		788C5539223CDA9E00AFD008 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlertCell.swift; path = /Users/tushar/Desktop/c2c/c2c/View/AlertCell.swift; sourceTree = "<absolute>"; };
 		AA2DBDB332790C1B629C5099 /* Pods_c2c.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_c2c.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD779C3E09AE07035CBE311 /* Pods-c2c.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-c2c.debug.xcconfig"; path = "Pods/Target Support Files/Pods-c2c/Pods-c2c.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +103,8 @@
 				784ED08122399DFD00B7C84C /* BottomTableCell.swift */,
 				784ED07D22398A0100B7C84C /* BottomCardSegue.swift */,
 				785C0137223A411D00051E85 /* AlertCell.swift */,
+				788C5537223BBE3400AFD008 /* FoodTableViewCell.swift */,
+				788C5539223CDA9E00AFD008 /* AlertCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +284,8 @@
 				785C0138223A411D00051E85 /* AlertCell.swift in Sources */,
 				784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */,
 				785C012E223A290B00051E85 /* FAQsVC.swift in Sources */,
+				788C553A223CDA9E00AFD008 /* AlertCell.swift in Sources */,
+				788C5538223BBE3400AFD008 /* FoodTableViewCell.swift in Sources */,
 				784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */,
 				7868A6B92237DEF30048F21B /* ViewController.swift in Sources */,
 				784ED08222399DFD00B7C84C /* BottomTableCell.swift in Sources */,
