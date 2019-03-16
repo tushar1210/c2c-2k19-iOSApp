@@ -25,7 +25,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var timingArr = [String]()
     var tokenArr = [String]()
     var userDict=[String:JSON]()
-    
+    var connected = false
     let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
     var str = "token"
     
@@ -81,9 +81,12 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
 
     @IBAction func micButton(_ sender: Any) {
-        start()
+        
         send()
         recieve()
+        connect.stop {
+            print("Stopprd")
+        }
     }
     
     @IBAction func somethingWrong(_ sender: Any) {
@@ -170,6 +173,7 @@ extension FoodCouponsVC{
             if error == nil{
 
                 self.connect.start()
+                
 
             }
             else{
@@ -179,6 +183,7 @@ extension FoodCouponsVC{
     }
     func send(){
         let time = connect.duration(forPayloadLength: 3)
+        start()
         print(str)
         print(connect.channelCount)
         let data = Data(str.utf8)
@@ -196,5 +201,6 @@ extension FoodCouponsVC{
         }
     }
     
+   
 }
 

@@ -62,7 +62,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UWQ-Fi-TZV"/>
-                                    <segue destination="H9Q-yr-tIp" kind="show" id="sTw-P6-xqG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,6 +73,7 @@
                         <outlet property="emailTextField" destination="DJW-H5-Qxc" id="0P7-Mz-OX6"/>
                         <outlet property="loginButton" destination="uba-hl-to7" id="vqv-9J-K8B"/>
                         <outlet property="passwordTextField" destination="Nm0-bE-LnI" id="vdw-JL-DS6"/>
+                        <segue destination="H9Q-yr-tIp" kind="show" identifier="go1" id="Gov-Mv-HMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -277,10 +277,6 @@
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-r3-adf">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="ShW-xx-hrI">
                                         <rect key="frame" x="349" y="17" width="4" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -349,10 +345,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-eJ-f6B">
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Qxy-ag-Hoy">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="bzs-nA-0fp">
@@ -465,10 +457,6 @@
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="Vnu-DR-Rce">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="DIq-E3-tKn">
                                         <rect key="frame" x="349" y="17" width="4" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -504,10 +492,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="HSk-gB-ogP">
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-cq-yPw">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="MKF-QC-n4F">
@@ -637,10 +621,6 @@
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="l0k-X3-7R4">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="Qgg-Oz-924">
                                         <rect key="frame" x="349" y="17" width="4" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -676,10 +656,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="NbD-jF-XYY">
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="sAv-f0-Fkq">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="iK3-43-mys">
@@ -731,10 +707,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Menu - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-Ao-tgn">
                                         <rect key="frame" x="13" y="13" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon - Search - Filled" translatesAutoresizingMaskIntoConstraints="NO" id="six-V5-uKd">
-                                        <rect key="frame" x="301" y="13" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Union 1" translatesAutoresizingMaskIntoConstraints="NO" id="cts-8y-gtZ">
@@ -837,7 +809,6 @@
     </scenes>
     <resources>
         <image name="Icon - Menu - Filled" width="24" height="24"/>
-        <image name="Icon - Search - Filled" width="24" height="24"/>
         <image name="Union 1" width="4" height="16"/>
         <image name="crossMenu" width="24" height="24"/>
         <image name="gold-medal" width="50" height="59.5"/>
