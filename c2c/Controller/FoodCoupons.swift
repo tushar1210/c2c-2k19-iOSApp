@@ -7,21 +7,24 @@
 //
 
 import UIKit
-
+import ChirpConnect
+import Firebase
 class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var contentTableView: UITableView!
+    @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var somethingWrong: UIButton!
     var status = false
     var typeArr = [String]()
     var statusArr = [Bool]()
     var timingArr = [String]()
-    
-    
+    let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
+    var str = "token"
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        start()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
@@ -31,6 +34,8 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         contentTableView.dataSource = self
         contentTableView.backgroundColor = .clear
         contentTableView.separatorStyle = .none
+        somethingWrong.titleLabel?.textColor = UIColor.acmGreen()
+    
     }
     
     
@@ -45,6 +50,14 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     }
 
 
+    @IBAction func micButton(_ sender: Any) {
+        send()
+        recieve()
+    }
+    
+    @IBAction func somethingWrong(_ sender: Any) {
+    
+    }
 }
 
 
@@ -116,4 +129,39 @@ extension FoodCouponsVC{
         }
     }
     
+    
 }
+extension FoodCouponsVC{
+    func start(){
+        connect.setConfigFromNetworkWithCompletion { (error) in
+            if error == nil{
+                
+                self.connect.start()
+                
+            }
+            else{
+                print("ERROR  ",error)
+            }
+        }
+    }
+    func send(){
+        let time = connect.duration(forPayloadLength: 3)
+        print(str)
+        print(connect.channelCount)
+        let data = Data(str.utf8)
+        connect.send(data)
+    }
+    
+    func recieve(){
+        connect.receivedBlock = {
+            (data : Data?, channel: UInt?) -> () in
+            if let data = data {
+                print(String(data: data, encoding: .ascii)!)
+                self.str = String(data: data, encoding: .ascii) ?? "NIL"
+                return;
+            }
+        }
+    }
+    
+}
+

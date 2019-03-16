@@ -8,6 +8,5 @@ target 'c2c' do
   # Pods for c2c
 pod 'Firebase/Core'
 pod 'Firebase/Database'
-pod 'Bottomsheet'
-pod 'BottomPopup'
+#pod 'ChirpSDK' 
 end

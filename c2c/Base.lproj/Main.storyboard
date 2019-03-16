@@ -792,6 +792,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dau-BN-0yz">
+                                <rect key="frame" x="122" y="419" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="mic"/>
+                                <connections>
+                                    <action selector="micButton:" destination="t9s-bf-DP9" eventType="touchUpInside" id="QJE-Op-c8u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u05-pr-Ks1">
+                                <rect key="frame" x="122" y="572" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Something Wrong?">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="15"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="somethingWrong:" destination="t9s-bf-DP9" eventType="touchUpInside" id="ikX-JN-4D9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="TNe-3B-b65"/>
@@ -800,6 +825,8 @@
                         <outlet property="bottomView" destination="khW-U6-ggy" id="Lpr-sz-C3p"/>
                         <outlet property="contentTableView" destination="NOT-u7-wx6" id="0Sb-dp-5gD"/>
                         <outlet property="menuIcon" destination="aXo-Ao-tgn" id="3fc-Cy-IEN"/>
+                        <outlet property="micButton" destination="dau-BN-0yz" id="z6H-bP-xSN"/>
+                        <outlet property="somethingWrong" destination="u05-pr-Ks1" id="fK9-td-DXc"/>
                         <segue destination="KOW-TZ-4PT" kind="custom" customClass="BottomCardSegue" customModule="c2c" customModuleProvider="target" id="WpZ-E2-wFh"/>
                     </connections>
                 </viewController>
@@ -816,6 +843,7 @@
         <image name="gold-medal" width="50" height="59.5"/>
         <image name="gold-medal-1" width="50" height="59.5"/>
         <image name="gold-medal-2" width="50" height="59.5"/>
+        <image name="mic" width="100" height="100"/>
         <image name="ux-design" width="50" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>

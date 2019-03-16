@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/tushar/Desktop/c2c/c2c/View/AlertCell.swift">
+      location = "group:c2c.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:c2c.xcodeproj">
+      location = "group:chirp-Bridging-Header.h">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
