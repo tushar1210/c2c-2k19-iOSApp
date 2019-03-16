@@ -9,4 +9,5 @@ target 'c2c' do
 pod 'Firebase/Core'
 pod 'Firebase/Database'
 #pod 'ChirpSDK' 
+pod 'SwiftyJSON'
 end

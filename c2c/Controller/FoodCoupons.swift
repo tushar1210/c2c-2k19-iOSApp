@@ -9,6 +9,8 @@
 import UIKit
 import ChirpConnect
 import Firebase
+import SwiftyJSON
+
 class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var bottomView: UIView!
@@ -16,15 +18,19 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBOutlet weak var contentTableView: UITableView!
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var somethingWrong: UIButton!
+    
     var status = false
     var typeArr = [String]()
     var statusArr = [Bool]()
     var timingArr = [String]()
+    var tokenArr = [String]()
+    var userDict=[String:JSON]()
+    
     let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
     var str = "token"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        start()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
@@ -35,10 +41,34 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         contentTableView.backgroundColor = .clear
         contentTableView.separatorStyle = .none
         somethingWrong.titleLabel?.textColor = UIColor.acmGreen()
-    
+        get()
+        
     }
     
-    
+    func get(){
+        let ref = Database.database().reference()
+        ref.observe(.value) { (snap) in
+            
+            print("SNAP",snap)
+            var data = JSON(snap.value)
+            var k=0
+            print("COunt", data)
+            for i in 0...data["sannables"]["list"].count-1{
+                self.typeArr.append(data["sannables"]["list"][i]["type"].stringValue)
+                self.tokenArr.append(data["sannables"]["list"][i]["key"].stringValue)
+                self.timingArr.append(data["sannables"]["list"][i]["timings"].stringValue)
+                print("TYPE", self.typeArr[i])
+            }
+            for (key,subJson):(String,JSON) in data["sannables"]{
+                if key != "sannables"{
+                    self.userDict[key] = data["sannables"][key]["user"]
+                    
+                }
+
+            }
+            print("USER",self.userDict)
+        }
+    }
     
     @objc func handleTap() {
         print("tapped")
@@ -51,6 +81,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
 
     @IBAction func micButton(_ sender: Any) {
+        start()
         send()
         recieve()
     }
@@ -63,7 +94,8 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
 extension FoodCouponsVC{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        
+       return typeArr.count
         
     }
     
@@ -84,9 +116,9 @@ extension FoodCouponsVC{
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! FoodTableViewCell
         cell.backgroundColor=UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         cell.layer.cornerRadius = 10
-        cell.typeLabel.text = "Lunch"
+        cell.typeLabel.text = typeArr[indexPath.section]
         cell.typeLabel.textColor = .white
-        cell.timingLabel.text = "10-2"
+        cell.timingLabel.text = timingArr[indexPath.section]
         cell.statusLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.75)
         cell.timingLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         
@@ -132,12 +164,13 @@ extension FoodCouponsVC{
     
 }
 extension FoodCouponsVC{
+    
     func start(){
         connect.setConfigFromNetworkWithCompletion { (error) in
             if error == nil{
-                
+
                 self.connect.start()
-                
+
             }
             else{
                 print("ERROR  ",error)
@@ -151,7 +184,7 @@ extension FoodCouponsVC{
         let data = Data(str.utf8)
         connect.send(data)
     }
-    
+
     func recieve(){
         connect.receivedBlock = {
             (data : Data?, channel: UInt?) -> () in

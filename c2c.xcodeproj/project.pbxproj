@@ -25,6 +25,7 @@
 		788C5538223BBE3400AFD008 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C5537223BBE3400AFD008 /* FoodTableViewCell.swift */; };
 		788C553C223CDCE000AFD008 /* ChirpConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788C553B223CDCDF00AFD008 /* ChirpConnect.framework */; };
 		78CDEE50223CDDAC0028DD63 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDEE4F223CDDAC0028DD63 /* AlertCell.swift */; };
+		78DED802223D6586007D8434 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78DED801223D6586007D8434 /* GoogleService-Info.plist */; };
 		979626971C3006AA5BD9CB24 /* Pods_c2c.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DBDB332790C1B629C5099 /* Pods_c2c.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		788C5537223BBE3400AFD008 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		788C553B223CDCDF00AFD008 /* ChirpConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChirpConnect.framework; sourceTree = "<group>"; };
 		78CDEE4F223CDDAC0028DD63 /* AlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
+		78DED801223D6586007D8434 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA2DBDB332790C1B629C5099 /* Pods_c2c.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_c2c.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD779C3E09AE07035CBE311 /* Pods-c2c.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-c2c.debug.xcconfig"; path = "Pods/Target Support Files/Pods-c2c/Pods-c2c.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				7868A6BF2237DEF90048F21B /* LaunchScreen.storyboard */,
 				7868A6BA2237DEF30048F21B /* Main.storyboard */,
 				7868A6C22237DEF90048F21B /* Info.plist */,
+				78DED801223D6586007D8434 /* GoogleService-Info.plist */,
 				7868A6C82237E0A40048F21B /* Fonts */,
 			);
 			path = c2c;
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7868A6C12237DEF90048F21B /* LaunchScreen.storyboard in Resources */,
+				78DED802223D6586007D8434 /* GoogleService-Info.plist in Resources */,
 				7868A6BE2237DEF90048F21B /* Assets.xcassets in Resources */,
 				7868A6BC2237DEF30048F21B /* Main.storyboard in Resources */,
 			);
@@ -241,12 +245,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-c2c/Pods-c2c-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
