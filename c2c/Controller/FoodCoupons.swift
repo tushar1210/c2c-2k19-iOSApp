@@ -24,13 +24,15 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var status = false
     var typeArr = [String]()
     var statusArr = [Bool]()
-    var timingArr = [String]()
     var tokenArr = [String]()
     var userDict=[String:JSON]()
     var connected = false
     var startTime = [String]()
     var endTime = [String]()
     var currentlySelectedType = ""
+    var childCount = 0
+    var absent = true
+    
     let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
     var str = ""
     var allUsersInType = [String()]
@@ -53,6 +55,12 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     func get(){
         let ref = Database.database().reference()
+        typeArr.removeAll()
+        statusArr.removeAll()
+        tokenArr.removeAll()
+        startTime.removeAll()
+        endTime.removeAll()
+        
         ref.observe(.value) { (snap) in
             
             var data = JSON(snap.value)
@@ -105,11 +113,12 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
             off=false
         }
         
-        send()
+//        send()
         recieve()
-        connect.stop {
-            print("Stopped")
-        }
+        
+//        connect.stop {
+//            print("Stopped")
+//        }
     }
     
     @IBAction func somethingWrong(_ sender: Any) {
@@ -169,13 +178,19 @@ extension FoodCouponsVC{
             cell.sideView.backgroundColor = UIColor.acmGreen()
             cell.statusLabel.textColor = .white
             str = tokenArr[indexPath.section]
+            
             currentlySelectedType = cell.typeLabel.text!
-                    for i in 0...userDict[currentlySelectedType]!.count-1{
-                        if currentUser == userDict[currentlySelectedType]![i].stringValue {
-                            cell.isUserInteractionEnabled = false
-                            cell.statusLabel.text = "Redeemed"
-                        }
-                    }
+            for i in 0...userDict[currentlySelectedType]!.count-1{
+                if currentUser == userDict[currentlySelectedType]![i].stringValue {
+                    cell.isUserInteractionEnabled = false
+                    cell.statusLabel.text = "Redeemed"
+                    currentlySelectedType = ""
+                    
+                }else{
+                    childCount = i
+                    absent = false
+                }
+            }
             checkpoint2()
         }
        
@@ -211,24 +226,44 @@ extension FoodCouponsVC{
         }
     }
     
-    func send(){
-        if str != ""{
-            let time = connect.duration(forPayloadLength: 3)
-//            print(str)
-            let data = Data(str.utf8)
-            connect.send(data)
-        }
-    }
+//    func send(){
+//        if str != ""{
+//            let time = connect.duration(forPayloadLength: 3)
+////            print(str)
+//            let data = Data(str.utf8)
+//            connect.send(data)
+//        }
+//    }
 
     func recieve(){
         connect.receivedBlock = {
             (data : Data?, channel: UInt?) -> () in
             if let data = data {
                 print(String(data: data, encoding: .ascii)!)
-                self.str = String(data: data, encoding: .ascii) ?? "NIL"
+                if self.str == String(data: data, encoding: .ascii) ?? "NIL" && self.absent == false{
+                    print("MATCH")
+                    self.updateUser()
+                }
+                else{
+                    print("Not MAtched")
+                }
                 return;
             }
         }
+    }
+    func updateUser(){
+        let ref = Database.database().reference().child("scannables").child(currentlySelectedType).child("couponsUserList")
+        var allUser = JSON().arrayValue
+        ref.observe(.value) { (snap) in
+            let json = JSON(snap.value)
+            print(json)
+            allUser = json.arrayValue
+            allUser.append(JSON(currentUser))
+            print(allUser)
+        }
+        
+        //ref.setValue([String(childCount+1):currentUser])
+        
     }
 }
 
