@@ -66,7 +66,8 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
                 }
 
             }
-            print("USER",self.userDict)
+            
+            self.contentTableView.reloadData()
         }
     }
     

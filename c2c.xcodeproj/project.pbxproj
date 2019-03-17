@@ -26,6 +26,7 @@
 		788C553C223CDCE000AFD008 /* ChirpConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788C553B223CDCDF00AFD008 /* ChirpConnect.framework */; };
 		78CDEE50223CDDAC0028DD63 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CDEE4F223CDDAC0028DD63 /* AlertCell.swift */; };
 		78DED802223D6586007D8434 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78DED801223D6586007D8434 /* GoogleService-Info.plist */; };
+		78DED805223E153A007D8434 /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DED804223E153A007D8434 /* AgendaTableViewCell.swift */; };
 		979626971C3006AA5BD9CB24 /* Pods_c2c.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2DBDB332790C1B629C5099 /* Pods_c2c.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		788C553B223CDCDF00AFD008 /* ChirpConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChirpConnect.framework; sourceTree = "<group>"; };
 		78CDEE4F223CDDAC0028DD63 /* AlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
 		78DED801223D6586007D8434 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		78DED804223E153A007D8434 /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
 		AA2DBDB332790C1B629C5099 /* Pods_c2c.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_c2c.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAD779C3E09AE07035CBE311 /* Pods-c2c.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-c2c.debug.xcconfig"; path = "Pods/Target Support Files/Pods-c2c/Pods-c2c.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +105,7 @@
 		785C0136223A40EF00051E85 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78DED804223E153A007D8434 /* AgendaTableViewCell.swift */,
 				784ED08122399DFD00B7C84C /* BottomTableCell.swift */,
 				784ED07D22398A0100B7C84C /* BottomCardSegue.swift */,
 				78CDEE4F223CDDAC0028DD63 /* AlertCell.swift */,
@@ -290,6 +293,7 @@
 				784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */,
 				785C012E223A290B00051E85 /* FAQsVC.swift in Sources */,
 				788C5538223BBE3400AFD008 /* FoodTableViewCell.swift in Sources */,
+				78DED805223E153A007D8434 /* AgendaTableViewCell.swift in Sources */,
 				784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */,
 				7868A6B92237DEF30048F21B /* ViewController.swift in Sources */,
 				784ED08222399DFD00B7C84C /* BottomTableCell.swift in Sources */,
