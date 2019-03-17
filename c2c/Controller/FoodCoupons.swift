@@ -5,6 +5,8 @@
 //  Created by Tushar Singh on 14/03/19.
 //  Copyright © 2019 Tushar Singh. All rights reserved.
 //
+var off = true
+var currentUser = "abc@yahoomail.com"
 
 import UIKit
 import ChirpConnect
@@ -26,8 +28,12 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var tokenArr = [String]()
     var userDict=[String:JSON]()
     var connected = false
+    var startTime = [String]()
+    var endTime = [String]()
+    var currentlySelectedType = ""
     let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
-    var str = "token"
+    var str = ""
+    var allUsersInType = [String()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,30 +55,41 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         let ref = Database.database().reference()
         ref.observe(.value) { (snap) in
             
-            print("SNAP",snap)
             var data = JSON(snap.value)
             var k=0
-            print("COunt", data)
-            for i in 0...data["sannables"]["list"].count-1{
-                self.typeArr.append(data["sannables"]["list"][i]["type"].stringValue)
-                self.tokenArr.append(data["sannables"]["list"][i]["key"].stringValue)
-                self.timingArr.append(data["sannables"]["list"][i]["timings"].stringValue)
-                print("TYPE", self.typeArr[i])
+            for i in 0...data["scannables"]["list"]["scannableList"].count-1{
+                self.typeArr.append(data["scannables"]["list"]["scannableList"][i]["scannableValue"].stringValue)
+                self.tokenArr.append(data["scannables"]["list"]["scannableList"][i]["scannableKey"].stringValue)
+                self.startTime.append(data["scannables"]["list"]["scannableList"][i]["scannableStartTime"].stringValue)
+                self.endTime.append(data["scannables"]["list"]["scannableList"][i]["scannableEndTime"].stringValue)
+//                print("TYPE", self.typeArr[i])
             }
-            for (key,subJson):(String,JSON) in data["sannables"]{
-                if key != "sannables"{
-                    self.userDict[key] = data["sannables"][key]["user"]
+           
+            for (key,subJson):(String,JSON) in data["scannables"]{
+                if key != "list"{
+                    self.userDict[key] = data["scannables"][key]["couponsUserList"]
                     
                 }
 
             }
+            self.checkpoint2()
+            
             
             self.contentTableView.reloadData()
         }
     }
+
+    func checkpoint2(){
+        if currentlySelectedType != ""{
+            var json = JSON(userDict[currentlySelectedType])
+            print("DICT",userDict,"    ",currentlySelectedType)
+//            print(json[0])
+            
+        }
+        
+    }
     
     @objc func handleTap() {
-        print("tapped")
         let childVC = storyboard!.instantiateViewController(withIdentifier: "BottomMenu")
         let segue = BottomCardSegue(identifier: nil, source: self, destination: childVC)
         prepare(for: segue, sender: nil)
@@ -83,10 +100,15 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
     @IBAction func micButton(_ sender: Any) {
         
+        if off{
+            start()
+            off=false
+        }
+        
         send()
         recieve()
         connect.stop {
-            print("Stopprd")
+            print("Stopped")
         }
     }
     
@@ -122,12 +144,12 @@ extension FoodCouponsVC{
         cell.layer.cornerRadius = 10
         cell.typeLabel.text = typeArr[indexPath.section]
         cell.typeLabel.textColor = .white
-        cell.timingLabel.text = timingArr[indexPath.section]
+        cell.timingLabel.text = startTime[indexPath.section]+" - "+endTime[indexPath.section]
         cell.statusLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.75)
         cell.timingLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
-        
         cell.selectionStyle = .none
-      
+
+        
         if status{
             cell.statusLabel.text = "Redeemed"
             cell.isUserInteractionEnabled = false
@@ -140,15 +162,23 @@ extension FoodCouponsVC{
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
         if !status{
             cell.sideView.backgroundColor = UIColor.acmGreen()
             cell.statusLabel.textColor = .white
-            
+            str = tokenArr[indexPath.section]
+            currentlySelectedType = cell.typeLabel.text!
+                    for i in 0...userDict[currentlySelectedType]!.count-1{
+                        if currentUser == userDict[currentlySelectedType]![i].stringValue {
+                            cell.isUserInteractionEnabled = false
+                            cell.statusLabel.text = "Redeemed"
+                        }
+                    }
+            checkpoint2()
         }
        
-        
         
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -156,15 +186,16 @@ extension FoodCouponsVC{
         if !status{
             cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha:173/255)
             cell.statusLabel.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-            
+            str = ""
+            currentlySelectedType = ""
         }
         else{
             cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 173/255)
             cell.statusLabel.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-            
+            str = ""
+            currentlySelectedType = ""
         }
     }
-    
     
 }
 extension FoodCouponsVC{
@@ -172,23 +203,21 @@ extension FoodCouponsVC{
     func start(){
         connect.setConfigFromNetworkWithCompletion { (error) in
             if error == nil{
-
                 self.connect.start()
-                
-
             }
             else{
                 print("ERROR  ",error)
             }
         }
     }
+    
     func send(){
-        let time = connect.duration(forPayloadLength: 3)
-        start()
-        print(str)
-        print(connect.channelCount)
-        let data = Data(str.utf8)
-        connect.send(data)
+        if str != ""{
+            let time = connect.duration(forPayloadLength: 3)
+//            print(str)
+            let data = Data(str.utf8)
+            connect.send(data)
+        }
     }
 
     func recieve(){
@@ -201,7 +230,5 @@ extension FoodCouponsVC{
             }
         }
     }
-    
-   
 }
 

@@ -5,7 +5,7 @@
  *  This file is part of the Chirp Connect SDK for iOS.
  *  For full information on usage and licensing, see http://chirp.io/
  *
- *  Copyright © 2011-2019, Asio Ltd.
+ *  Copyright © 2011-2018, Asio Ltd.
  *  All rights reserved.
  *
  *----------------------------------------------------------------------------*/
@@ -55,16 +55,6 @@ typedef void (^ChirpSetConfigFromNetworkBlock)  (NSError *_Nullable error);
 typedef void (^ChirpVolumeChangedBlock)         (float volume);
 typedef void (^ChirpAudioBufferUpdatedBlock)    (AudioBuffer buffer,
                                                  NSUInteger numberOfFrames);
-
-//------------------------------------------------------------------------------
-#pragma mark - Enums
-//------------------------------------------------------------------------------
-
-typedef NS_ENUM(NSInteger, ChirpAudioMode) {
-    ChirpAudioModeSend,
-    ChirpAudioModeReceive,
-    ChirpAudioModeSendAndReceive
-};
 
 //------------------------------------------------------------------------------
 #pragma mark - Exports

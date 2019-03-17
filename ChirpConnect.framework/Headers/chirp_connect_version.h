@@ -1,56 +1,40 @@
-/**-----------------------------------------------------------------------------
- *
- *  @file chirp_connect_version.h
- *
- *  @brief Provides getter to the lib name, version and build number of the
- *         library
+/**------------------------------------------------------------------------------
  *
  *  ASIO CONFIDENTIAL
+ *
+ *  @file chirp_version.h
  *
  *  All contents are strictly proprietary, and not for copying, resale,
  *  or use outside of the agreed license.
  *
- *  Copyright © 2011-2019, Asio Ltd.
+ *  Copyright © 2011-2018, Asio Ltd.
  *  All rights reserved.
  *
  *----------------------------------------------------------------------------*/
 
-#ifndef CHIRP_CONNECT_VERSION_H
-#define CHIRP_CONNECT_VERSION_H
+#ifndef __CHIRP_CONNECT_VERSION_H__
+#define __CHIRP_CONNECT_VERSION_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-#include "chirp_connect.h"
 
-/**
- * Get the name of SDK : "chirp-connect". This function doesn't rely at all on
- * the SDK creation and can be called at any time.
- *
- * @return The name of the library
- */
-PUBLIC_SYM const char *chirp_connect_get_library_name(void);
+#include "chirp_sdk_defines.h"
+#include "chirp_sdk_package.h"
 
-/**
- * Get the version number of the SDK. This function doesn't rely at all on the
- * SDK creation and can be called at any time.
- *
- * @return The version number of the SDK in the MAJOR.MINOR.PATCH string
- *         representation.
- */
-PUBLIC_SYM const char *chirp_connect_get_version(void);
+typedef struct _chirp_version_t {
+    chirp_package_t connect;
+    chirp_package_t core;
+    chirp_package_t crypto;
+} chirp_version_t;
 
-/**
- * Get the build number of the SDK. This function doesn't rely at all on the
- * SDK creation and can be called at any time.
- *
- * @return The build number of the SDK as a string.
- */
-PUBLIC_SYM const char *chirp_connect_get_build_number(void);
-    
+PUBLIC_SYM chirp_version_t chirp_connect_get_chirp_versions(void);
+PUBLIC_SYM const char *chirp_connect_get_package_full_version(void);
+PUBLIC_SYM const char *chirp_connect_get_package_name(void);
+PUBLIC_SYM const char *chirp_connect_get_package_version(void);
+PUBLIC_SYM const char *chirp_connect_get_package_build(void);
+
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* !CHIRP_CONNECT_VERSION_H */
+#endif // __CHIRP_CONNECT_VERSION_H__

@@ -5,7 +5,7 @@
  *  This file is part of the Chirp Connect SDK for iOS.
  *  For full information on usage and licensing, see http://chirp.io/
  *
- *  Copyright © 2011-2019, Asio Ltd.
+ *  Copyright © 2011-2018, Asio Ltd.
  *  All rights reserved.
  *
  *----------------------------------------------------------------------------*/
@@ -13,8 +13,11 @@
 @import AudioToolbox;
 @import Foundation;
 
-#import "chirp_connect.h"
-#import "ChirpConnectDefines.h"
+#import "chirp_connect_states.h"
+#import "chirp_connect_errors.h"
+#import "chirp_connect_version.h"
+#import "chirp_connect_callbacks.h"
+#import <ChirpConnect/ChirpConnectDefines.h>
 
 /**
  The main Chirp Connect SDK class. Use this to send and receive data using
@@ -131,10 +134,10 @@
  Set the config to use within the SDK. This configures audio transmission
  properties, and must be done before starting the SDK via the
  `start` method.
-
+ 
  Config strings can be downloaded from the Chirp developer hub at
  https://developers.chirp.io.
-
+ 
  Note that this method also authenticates your application with Chirp's
  auth servers. For completely offline operation, please get in touch
  at support@chirp.io.
@@ -151,8 +154,8 @@
  This should typically only be used in cases in which you want your
  configuration to be generated dynamically -- for example, if you are
  rapidly prototyping different transmission settings with Chirp.
-
- @param completion A non-nil ChirpSetConfigFromNetworkBlock completion handler.
+ 
+ @param completion A non-nil ChirpGetLicenceBlock completion handler.
  */
 - (void) setConfigFromNetworkWithCompletion:(ChirpSetConfigFromNetworkBlock _Nonnull) completion;
 
@@ -161,24 +164,11 @@
 /**
  Start the SDK running. This must be done before sending or receiving data
  using the SDK instance.
-
- @warning A config must be set before calling this method
+ 
+ @warning A licence must be set before calling this method
  @return nil if the engine is started, otherwise an NSError.
  */
 - (NSError * _Nullable) start;
-
-//------------------------------------------------------------------------------
-
-/**
- Start the SDK running in Send, Receive or SendAndReceive mode. In Send mode,
- microphone permissions will not be required. Input audio will not be processed
- in Send mode, likewise output audio will not be processed in Receive mode.
- 
- @warning A config must be set before calling this method
- @param mode ChirpAudioModeSend, ChirpAudioModeReceive or ChirpAudioModeSendAndReceive mode
- @return nil if the engine is started, otherwise an NSError.
- */
-- (NSError * _Nullable) startInMode:(ChirpAudioMode)mode;
 
 //------------------------------------------------------------------------------
 
@@ -193,7 +183,7 @@
 
 /**
  Stop the SDK running.
-
+ 
  @param completion A block called when the SDK has fully finished processing and
  stopped all audio IO.
  */
@@ -202,27 +192,11 @@
 //------------------------------------------------------------------------------
 
 /**
- Set whether or not to mix playing audio with Chirp data (such as the Music app).
- Note that by default the SDK will route all audio to the device's speaker
- on start.
+ Set whether or not to route audio to connected bluetooth audio accessories.
  Defaults to NO.
  @warning This must be set before calling `start`.
  */
-@property (nonatomic, assign) BOOL shouldMixAudio;
-
-/**
- Override current audio settings to force audio to external peripherals
- as opposed to the device's speaker.
- Defaults to NO.
- */
-@property (nonatomic, assign) BOOL routeAudioToExternalPeripherals;
-
-/**
- Deactivate the audio session when stopping the SDK. This should be set
- to NO if the shared AVAudioSession is in use elsewhere in your app.
- Defaults to YES
- */
-@property (nonatomic, assign) BOOL shouldDeactivateAudioSession;
+@property (nonatomic, assign) BOOL shouldRouteAudioToBluetoothPeripherals;
 
 //------------------------------------------------------------------------------
 #pragma mark - Methods: Send/Receive
@@ -238,6 +212,7 @@
  */
 - (NSError * _Nullable) send:(NSData *_Nonnull) data;
 
+//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 #pragma mark - Blocks
@@ -245,8 +220,7 @@
 
 /**
  A block called when sending starts.
- It is passed the NSData being sent and the NSUInteger channel the data is
- sent on.
+ It is passed the NSData being sent.
  */
 @property (nonatomic, copy) ChirpSendingBlock _Nullable sendingBlock;
 
@@ -254,9 +228,7 @@
 
 /**
  A block called when sending ends.
- It is passed the NSData that was sent and the NSUInteger channel the data was
- sent on.
-
+ It is passed the NSData that was sent.
  */
 @property (nonatomic, copy) ChirpSentBlock _Nullable sentBlock;
 
@@ -264,7 +236,6 @@
 
 /**
  A block called when receiving starts.
- It is passed the NSUInteger channel the data is being received on.
  */
 @property (nonatomic, copy) ChirpReceivingBlock _Nullable receivingBlock;
 
@@ -272,8 +243,7 @@
 
 /**
  A block called when receiving ends.
- It is passed the received NSData and the NSUInteger channel the data was
- received on, or nil if the decode operation has failed.
+ It is passed the received NSData, or nil if the decode operation has failed.
  */
 @property (nonatomic, copy) ChirpReceivedBlock _Nullable receivedBlock;
 
@@ -286,6 +256,7 @@
 @property (nonatomic, copy) ChirpStateUpdatedBlock _Nullable stateUpdatedBlock;
 
 //------------------------------------------------------------------------------
+
 
 /**
  A block called when *system* volume changes, and when the SDK is started via
@@ -348,7 +319,7 @@
  Generate random data with random length which is guaranteed to be valid for the Connect SDK's
  current config.
  Similar to running the randomPayloadWithLength:0
-
+ 
  @return NSData A non-nil, valid NSData instance with random bytes.
  */
 - (NSData * _Nonnull)randomPayloadWithRandomLength;
@@ -358,7 +329,7 @@
 /**
  Set the random seed used by the SDK. This is useful if you want to control
  the sequence of random payloads generated by `randomData`.
-
+ 
  @param  seed A positive integer.
  */
 - (void) setRandomSeed:(NSUInteger) seed;

@@ -19,8 +19,7 @@ class SponsorsVC: UIViewController {
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
-        bottomView.layer.cornerRadius = 20
-        
+        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
 
         // Do any additional setup after loading the view.
     }
@@ -35,4 +34,13 @@ class SponsorsVC: UIViewController {
         
     }
 
+}
+
+extension UIView {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }

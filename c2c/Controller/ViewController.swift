@@ -50,6 +50,7 @@ class ViewController: UIViewController {
         for (key,subJson):(String,JSON) in self.json{
             print(json[key]["email"].stringValue)
             if email == json[key]["email"].stringValue && pass == json[key]["password"].stringValue{
+                currentUser = email
                 performSegue(withIdentifier: "go1", sender: nil)
                 
             }else{
