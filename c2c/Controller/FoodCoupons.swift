@@ -6,7 +6,7 @@
 //  Copyright © 2019 Tushar Singh. All rights reserved.
 //
 var off = true
-var currentUser = "abc@yahoomail.com"
+var currentUser = "test@yahoomail.com"
 
 import UIKit
 import ChirpConnect
@@ -32,6 +32,8 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var currentlySelectedType = ""
     var childCount = 0
     var absent = true
+    var dict:[String:String] = [:]
+    var ctr = 0
     
     let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
     var str = ""
@@ -39,6 +41,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        get()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
@@ -49,7 +52,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         contentTableView.backgroundColor = .clear
         contentTableView.separatorStyle = .none
         somethingWrong.titleLabel?.textColor = UIColor.acmGreen()
-        get()
+
         
     }
     
@@ -185,6 +188,7 @@ extension FoodCouponsVC{
                     cell.isUserInteractionEnabled = false
                     cell.statusLabel.text = "Redeemed"
                     currentlySelectedType = ""
+                
                     
                 }else{
                     childCount = i
@@ -240,9 +244,15 @@ extension FoodCouponsVC{
             (data : Data?, channel: UInt?) -> () in
             if let data = data {
                 print(String(data: data, encoding: .ascii)!)
-                if self.str == String(data: data, encoding: .ascii) ?? "NIL" && self.absent == false{
+                if self.str == String(data: data, encoding: .ascii) ?? "NIL" && self.absent == false && self.currentlySelectedType != ""{
                     print("MATCH")
-                    self.updateUser()
+                    
+                        self.updateUser()
+                        
+                    
+                }
+                else if self.currentlySelectedType == ""{
+                    print("Already selected")
                 }
                 else{
                     print("Not MAtched")
@@ -252,17 +262,41 @@ extension FoodCouponsVC{
         }
     }
     func updateUser(){
-        let ref = Database.database().reference().child("scannables").child(currentlySelectedType).child("couponsUserList")
-        var allUser = JSON().arrayValue
+        let ref = Database.database().reference().child("scannables").child(currentlySelectedType)
+        var arr = [JSON]()
+        var NSarr = [String]()
+        var json = JSON()
+        var dict:[String:String] = [:]
+       
         ref.observe(.value) { (snap) in
-            let json = JSON(snap.value)
-            print(json)
-            allUser = json.arrayValue
-            allUser.append(JSON(currentUser))
-            print(allUser)
-        }
+            json = JSON(snap.value)
+            self.ctr+=1
+            let val = snap.value as! Dictionary<String,AnyObject>
+            arr = json["couponsUserList"].arrayValue
+            arr.append(JSON(currentUser))
+            for i in 0...arr.count-1{
+                NSarr.append(arr[i].stringValue)
+                dict["\(i)"] = arr[i].stringValue
+                print(NSarr[i])
+                if self.ctr==1{
+                    self.send(dict: dict)
+                }
+            }}
+    }
+    
+    
+
+    
+    func send(dict:[String:String]){
+        let ref = Database.database().reference().child("scannables").child(currentlySelectedType)
         
-        //ref.setValue([String(childCount+1):currentUser])
+            ref.child("couponsUserList").setValue(dict, withCompletionBlock: { (e, ref) in
+                if e != nil{
+                    print(e!)
+                }
+            })
+        contentTableView.reloadData()
+            
         
     }
 }
