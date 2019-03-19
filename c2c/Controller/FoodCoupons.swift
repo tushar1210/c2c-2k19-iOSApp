@@ -308,7 +308,7 @@ extension FoodCouponsVC{
         let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
         cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
-        
+        cell.statusLabel.text = ""
         currentType = ""
         token = ""
         currentT=""

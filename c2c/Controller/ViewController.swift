@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         get()
         emailTextField.layer.borderWidth = 1.0
         emailTextField.layer.borderColor = UIColor(red: 57/255, green: 199/257, blue: 157/255, alpha: 1).cgColor
+        emailTextField.textColor = .white
+        passwordTextField.textColor = .white
         emailTextField.frame.size.height = 45
         emailTextField.layer.cornerRadius = 23
         emailTextField.layer.masksToBounds = true
@@ -33,6 +35,12 @@ class ViewController: UIViewController {
         
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        print("TOUCH")
+    }
+    let defaults = UserDefaults.standard
+    
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         print("Hello World")
@@ -51,12 +59,15 @@ class ViewController: UIViewController {
             print(json[key]["email"].stringValue)
             if email == json[key]["email"].stringValue && pass == json[key]["password"].stringValue{
                 currentUser = email
+                defaults.set(true, forKey: "status")
                 performSegue(withIdentifier: "go1", sender: nil)
                 
             }else{
                 passwordTextField.text = ""
                 emailTextField.isHighlighted=true
-                passwordTextField.placeholder = "Wrong Credentials"
+                
+                
+                defaults.set(false, forKey: "islogin")
             }
         }
     }
