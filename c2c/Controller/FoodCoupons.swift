@@ -5,8 +5,8 @@
 //  Created by Tushar Singh on 14/03/19.
 //  Copyright © 2019 Tushar Singh. All rights reserved.
 //
-var currentUser = "tushartest@aws.com"
-var started=0
+var currentUser = "tushar1test@aws.com"
+var off=true
 
 import UIKit
 import ChirpConnect
@@ -37,6 +37,10 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var currentType=""
     var isPresent = true
     var reedeemedArr = [String]()
+    var currentT = String()
+    var typeArr = [String]()
+    var status = ""
+    var userDict = [String:[String]]()
     override func viewDidLoad() {
         get()
         super.viewDidLoad()
@@ -64,6 +68,8 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         
     }
     
+    
+    
     func get(){
         let ref = Database.database().reference().child("scannables")
         ref.observe(.value) { (snap) in
@@ -74,14 +80,16 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
                 self.timingArrEnd.append(self.json["list"]["scannableList"][i]["scannableEndTime"].stringValue)
                 self.tokenArr.append(self.json["list"]["scannableList"][i]["scannableKey"].stringValue)
                 self.date.append(self.json["list"]["scannableList"][i]["scannableDate"].stringValue)
-                
+                self.typeArr.append(self.json["list"]["scannableList"][i]["scannableValue"].stringValue)
                 
             }
             for (key,_):(String,JSON) in self.json["attendance"]{
                 self.keyArr.append(key)
+                self.userArr.removeAll()
                 for i in 0...self.json["attendance"][key]["couponsUserList"].count-1{
                     self.userArr.append(self.json["attendance"][key]["couponsUserList"][i].stringValue)
                     self.attendance[key] = self.userArr
+
                     
                 }
                 
@@ -117,14 +125,13 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
             
         }
         
-        print(reedeemedArr)
-            
+        
         
     }
 
     @IBAction func micButton(_ sender: Any) {
         
-        if started==0 && currentType != "" && isPresent==false{
+        if off && currentType != "" && isPresent==false{
             start()
             
         }
@@ -140,6 +147,61 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     }
 }
 
+extension FoodCouponsVC{
+    
+    func start(){
+        off=false
+        connect.setConfigFromNetworkWithCompletion { (error) in
+            if error == nil{
+                self.connect.start()
+            }
+            else{
+                print("ERROR  ",error!)
+            }
+        }
+    }
+    func recieve(){
+        if currentType != ""{
+            connect.receivedBlock = {
+                (data : Data?, channel: UInt?) -> () in
+                if let data = data {
+                    print(String(data: data, encoding: .ascii)!)
+                    self.tokenRecieved = String(data: data, encoding: .ascii)!
+                    self.validate()
+                    return;
+                }
+                else{
+                    self.tokenRecieved=""
+                }
+                
+            }
+        }
+    }
+    
+    func validate(){
+
+        if tokenRecieved != "" && token != "" && isPresent == false && currentT != ""{
+
+            for i in 0...attendance[currentT]!.count-1{
+                if currentUser != attendance[currentT]![i] && tokenRecieved==token{
+                    status="ok"
+                }
+                else{
+                    print("already redeemed")
+                }
+            }
+            if status == "ok"{
+                attendance[currentT]!.append(currentUser)
+                let ref = Database.database().reference().child("scannables").child("attendance").child(currentT).child("couponsUserList")
+                ref.setValue(attendance[currentT])
+                
+            }
+
+        }
+
+    }
+    
+}
 
 extension FoodCouponsVC{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -163,6 +225,7 @@ extension FoodCouponsVC{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! FoodTableViewCell
+        
         cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         cell.backgroundColor=UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         cell.layer.cornerRadius = 10
@@ -188,48 +251,19 @@ extension FoodCouponsVC{
         token = tokenArr[indexPath.section]
         currentType=itemList[indexPath.section]
         cell.sideView.backgroundColor = UIColor.acmGreen()
-        
+        currentT=typeArr[indexPath.section]
+      
+
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
 
         currentType = ""
         token = ""
+        currentT=""
     }
     
 }
     
-extension FoodCouponsVC{
-    
-    func start(){
-        started+=1
-        connect.setConfigFromNetworkWithCompletion { (error) in
-            if error == nil{
-                self.connect.start()
-            }
-            else{
-                print("ERROR  ",error)
-            }
-        }
-    }
-    func recieve(){
-        if currentType != ""{
-            connect.receivedBlock = {
-                (data : Data?, channel: UInt?) -> () in
-                if let data = data {
-                    print(String(data: data, encoding: .ascii)!)
-                    
-                
-                    return;
-                }
-            
-            }
-        }
-    }
-    
-    func validate(){
-        
-    }
-    
-}
+
 
