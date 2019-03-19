@@ -48,7 +48,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
-        bottomView.layer.cornerRadius = 20
+ bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         contentTableView.delegate = self
         contentTableView.dataSource = self
         contentTableView.backgroundColor = .clear

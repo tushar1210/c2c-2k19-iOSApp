@@ -57,8 +57,17 @@ extension BottomMenuVC{
         var cell = tableView.cellForRow(at: indexPath) as! BottomTableCell
         cell.typeLabel.textColor = UIColor.acmGreen()
         print(cell.typeLabel.text)
-        let vc = storyboard!.instantiateViewController(withIdentifier: cell.typeLabel.text!)
-        present(vc, animated: true, completion: nil)
+        if cell.typeLabel.text != "Logout"{
+            let vc = storyboard!.instantiateViewController(withIdentifier: cell.typeLabel.text!)
+             present(vc, animated: true, completion: nil)
+            
+        }else{
+            let vc = storyboard!.instantiateViewController(withIdentifier: "Login")
+            let def = UserDefaults.standard
+            def.set(false, forKey: "status")
+             present(vc, animated: true, completion: nil)
+        }
+       
         
     }
 }

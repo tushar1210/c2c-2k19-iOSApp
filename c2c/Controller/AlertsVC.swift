@@ -23,7 +23,7 @@ class AlertsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
-        bottomView.layer.cornerRadius = 20
+        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         contentTableView.backgroundColor = .clear
         contentTableView.allowsSelection=false
     }

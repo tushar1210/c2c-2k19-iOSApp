@@ -28,10 +28,11 @@ class AgendaVC: UIViewController {
         contentTableView.separatorStyle = .none
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+    
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
-        bottomView.layer.cornerRadius = 20
+        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         contentTableView.delegate = self
         contentTableView.dataSource = self
         
