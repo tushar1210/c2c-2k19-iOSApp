@@ -18,10 +18,20 @@ class FoodTableViewCell: UITableViewCell {
     
     
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        typeLabel.text=""
+        timingLabel.text=""
+        statusLabel.text=""
+        sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+        isUserInteractionEnabled = true
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         self.statusLabel.transform = CGAffineTransform(rotationAngle: .pi/2)
     }
 

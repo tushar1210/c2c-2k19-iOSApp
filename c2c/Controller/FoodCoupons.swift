@@ -71,6 +71,15 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     
     func get(){
+        attendance.removeAll()
+        userArr.removeAll()
+        timingArrEnd.removeAll()
+        timingArrStart.removeAll()
+        itemList.removeAll()
+        tokenArr.removeAll()
+        date.removeAll()
+        typeArr.removeAll()
+        
         let ref = Database.database().reference().child("scannables")
         ref.observe(.value) { (snap) in
             self.json = JSON(snap.value)
@@ -131,14 +140,13 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
     @IBAction func micButton(_ sender: Any) {
         
-        if off && currentType != "" && isPresent==false{
+        if off && currentType != "" {
             start()
             
         }
-        if isPresent==false{
             recieve()
             
-        }
+        
         
     }
     
@@ -180,20 +188,43 @@ extension FoodCouponsVC{
     
     func validate(){
 
-        if tokenRecieved != "" && token != "" && isPresent == false && currentT != ""{
-
+        if tokenRecieved != "" && token != "" && currentT != ""{
+            var response = ""
+            
+            
+            
             for i in 0...attendance[currentT]!.count-1{
                 if currentUser != attendance[currentT]![i] && tokenRecieved==token{
                     status="ok"
+                    response = "Sucessfully Redeemed"
+                    let alert = UIAlertController(title: "Response", message: response, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
                 }
                 else{
+                    status=""
+                    response = "Item Already Redeemed"
                     print("already redeemed")
+                    let alert = UIAlertController(title: "Response", message: response, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
                 }
+                
             }
             if status == "ok"{
                 attendance[currentT]!.append(currentUser)
                 let ref = Database.database().reference().child("scannables").child("attendance").child(currentT).child("couponsUserList")
                 ref.setValue(attendance[currentT])
+                attendance.removeAll()
+                userArr.removeAll()
+                timingArrEnd.removeAll()
+                timingArrStart.removeAll()
+                itemList.removeAll()
+                tokenArr.removeAll()
+                date.removeAll()
+                typeArr.removeAll()
                 
             }
 
@@ -226,11 +257,14 @@ extension FoodCouponsVC{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! FoodTableViewCell
         
+
+        print(reedeemedArr,keyArr)
+                
+        cell.typeLabel.textColor = .white
         cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         cell.backgroundColor=UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         cell.layer.cornerRadius = 10
-
-        cell.statusLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.75)
+        cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
         cell.timingLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         cell.selectionStyle = .none
        
@@ -246,18 +280,35 @@ extension FoodCouponsVC{
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
         token = tokenArr[indexPath.section]
         currentType=itemList[indexPath.section]
         cell.sideView.backgroundColor = UIColor.acmGreen()
         currentT=typeArr[indexPath.section]
-      
+        cell.statusLabel.textColor = .white
+        if reedeemedArr.contains(currentT){
+            cell.statusLabel.text = "Redeemed"
+            cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+            cell.isSelected = false
+            cell.isUserInteractionEnabled = false
+            cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
+            currentT=""
+        }
+        else{
+            cell.statusLabel.text = "Redeem"
+            cell.statusLabel.textColor = .white
+        }
+        print(currentT)
 
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-
+        let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
+        cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+        cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
+        
         currentType = ""
         token = ""
         currentT=""
