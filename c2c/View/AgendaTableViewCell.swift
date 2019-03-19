@@ -14,6 +14,7 @@ class AgendaTableViewCell: UITableViewCell {
     @IBOutlet weak var timingLabel: UILabel!
     @IBOutlet weak var imageType: UIImageView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +24,7 @@ class AgendaTableViewCell: UITableViewCell {
         self.layer.cornerRadius = 10
         self.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         self.bottomView.isHidden = true
-        
+        dateLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

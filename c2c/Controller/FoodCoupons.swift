@@ -5,8 +5,8 @@
 //  Created by Tushar Singh on 14/03/19.
 //  Copyright © 2019 Tushar Singh. All rights reserved.
 //
-var off = true
-var currentUser = "test@yahoomail.com"
+var currentUser = "tushartest@aws.com"
+var started=0
 
 import UIKit
 import ChirpConnect
@@ -21,27 +21,25 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var somethingWrong: UIButton!
     
-    var status = false
-    var typeArr = [String]()
-    var statusArr = [Bool]()
+    var json = JSON()
+    var itemList = [String]()
+    var timingArrStart = [String]()
+    var timingArrEnd = [String]()
     var tokenArr = [String]()
-    var userDict=[String:JSON]()
-    var connected = false
-    var startTime = [String]()
-    var endTime = [String]()
-    var currentlySelectedType = ""
-    var childCount = 0
-    var absent = true
-    var dict:[String:String] = [:]
-    var ctr = 0
-    
+    var date = [String]()
+    var attendance = [String:[String]]()
+    var keyArr = [String]()
     let connect: ChirpConnect = ChirpConnect(appKey: "BC9BBD9E355CA7CAF83DD408e", andSecret: "8A9C04Ad084fBb21db1f478aE90ecCDfE3872ccFeD43A52E9b")!
-    var str = ""
-    var allUsersInType = [String()]
-    
+    var token = ""
+    var tokenRecieved = ""
+    var j=0
+    var userArr=[String]()
+    var currentType=""
+    var isPresent = true
+    var reedeemedArr = [String]()
     override func viewDidLoad() {
-        super.viewDidLoad()
         get()
+        super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
@@ -52,53 +50,11 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         contentTableView.backgroundColor = .clear
         contentTableView.separatorStyle = .none
         somethingWrong.titleLabel?.textColor = UIColor.acmGreen()
-
+        
         
     }
     
-    func get(){
-        let ref = Database.database().reference()
-        typeArr.removeAll()
-        statusArr.removeAll()
-        tokenArr.removeAll()
-        startTime.removeAll()
-        endTime.removeAll()
-        
-        ref.observe(.value) { (snap) in
-            
-            var data = JSON(snap.value)
-            var k=0
-            for i in 0...data["scannables"]["list"]["scannableList"].count-1{
-                self.typeArr.append(data["scannables"]["list"]["scannableList"][i]["scannableValue"].stringValue)
-                self.tokenArr.append(data["scannables"]["list"]["scannableList"][i]["scannableKey"].stringValue)
-                self.startTime.append(data["scannables"]["list"]["scannableList"][i]["scannableStartTime"].stringValue)
-                self.endTime.append(data["scannables"]["list"]["scannableList"][i]["scannableEndTime"].stringValue)
-//                print("TYPE", self.typeArr[i])
-            }
-           
-            for (key,subJson):(String,JSON) in data["scannables"]{
-                if key != "list"{
-                    self.userDict[key] = data["scannables"][key]["couponsUserList"]
-                    
-                }
-
-            }
-            self.checkpoint2()
-            
-            
-            self.contentTableView.reloadData()
-        }
-    }
-
-    func checkpoint2(){
-        if currentlySelectedType != ""{
-            var json = JSON(userDict[currentlySelectedType])
-            print("DICT",userDict,"    ",currentlySelectedType)
-//            print(json[0])
-            
-        }
-        
-    }
+    
     
     @objc func handleTap() {
         let childVC = storyboard!.instantiateViewController(withIdentifier: "BottomMenu")
@@ -107,21 +63,76 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         segue.perform()
         
     }
+    
+    func get(){
+        let ref = Database.database().reference().child("scannables")
+        ref.observe(.value) { (snap) in
+            self.json = JSON(snap.value)
+            for i in 0...self.json["list"]["scannableList"].count-1{
+                self.itemList.append(self.json["list"]["scannableList"][i]["scannableTitle"].stringValue)
+                self.timingArrStart.append(self.json["list"]["scannableList"][i]["scannableStartTime"].stringValue)
+                self.timingArrEnd.append(self.json["list"]["scannableList"][i]["scannableEndTime"].stringValue)
+                self.tokenArr.append(self.json["list"]["scannableList"][i]["scannableKey"].stringValue)
+                self.date.append(self.json["list"]["scannableList"][i]["scannableDate"].stringValue)
+                
+                
+            }
+            for (key,_):(String,JSON) in self.json["attendance"]{
+                self.keyArr.append(key)
+                for i in 0...self.json["attendance"][key]["couponsUserList"].count-1{
+                    self.userArr.append(self.json["attendance"][key]["couponsUserList"][i].stringValue)
+                    self.attendance[key] = self.userArr
+                    
+                }
+                
+                
+            }
+            self.check()
+            self.contentTableView.reloadData()
+        }
+        
+        
+    }
 
+    func check(){
+        
+        for i in 0...keyArr.count-1{
+                for j in 0...attendance[keyArr[i]]!.count-1{
+                    if currentUser != attendance[keyArr[i]]![j]{
+                        isPresent = false
+                        
+                        
+                    }
+                    else{
+                        isPresent = true
+                    }
+                    
+                }
+            if isPresent{
+                reedeemedArr.append(keyArr[i])
+            }
+                
+            
+            
+            
+        }
+        
+        print(reedeemedArr)
+            
+        
+    }
 
     @IBAction func micButton(_ sender: Any) {
         
-        if off{
+        if started==0 && currentType != "" && isPresent==false{
             start()
-            off=false
+            
+        }
+        if isPresent==false{
+            recieve()
+            
         }
         
-//        send()
-        recieve()
-        
-//        connect.stop {
-//            print("Stopped")
-//        }
     }
     
     @IBAction func somethingWrong(_ sender: Any) {
@@ -132,8 +143,8 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
 extension FoodCouponsVC{
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-       return typeArr.count
+
+        return itemList.count
         
     }
     
@@ -152,74 +163,46 @@ extension FoodCouponsVC{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! FoodTableViewCell
+        cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         cell.backgroundColor=UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         cell.layer.cornerRadius = 10
-        cell.typeLabel.text = typeArr[indexPath.section]
-        cell.typeLabel.textColor = .white
-        cell.timingLabel.text = startTime[indexPath.section]+" - "+endTime[indexPath.section]
+
         cell.statusLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.75)
         cell.timingLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         cell.selectionStyle = .none
+       
+        if json.count>0{
+            
+            cell.typeLabel.text = itemList[indexPath.section]
+            cell.timingLabel.text = timingArrStart[indexPath.section]+" - "+timingArrEnd[indexPath.section]
+            }
 
         
-        if status{
-            cell.statusLabel.text = "Redeemed"
-            cell.isUserInteractionEnabled = false
-        }else{
-            cell.statusLabel.text = "Redeem"
-            cell.isUserInteractionEnabled = true
-        }
-        cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha:173/255)
-        cell.statusLabel.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
+        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
-        if !status{
-            cell.sideView.backgroundColor = UIColor.acmGreen()
-            cell.statusLabel.textColor = .white
-            str = tokenArr[indexPath.section]
-            
-            currentlySelectedType = cell.typeLabel.text!
-            for i in 0...userDict[currentlySelectedType]!.count-1{
-                if currentUser == userDict[currentlySelectedType]![i].stringValue {
-                    cell.isUserInteractionEnabled = false
-                    cell.statusLabel.text = "Redeemed"
-                    currentlySelectedType = ""
-                
-                    
-                }else{
-                    childCount = i
-                    absent = false
-                }
-            }
-            checkpoint2()
-        }
-       
+        token = tokenArr[indexPath.section]
+        currentType=itemList[indexPath.section]
+        cell.sideView.backgroundColor = UIColor.acmGreen()
         
     }
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
-        if !status{
-            cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha:173/255)
-            cell.statusLabel.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-            str = ""
-            currentlySelectedType = ""
-        }
-        else{
-            cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 173/255)
-            cell.statusLabel.textColor = UIColor(red: 124/255, green: 124/255, blue: 124/255, alpha: 1)
-            str = ""
-            currentlySelectedType = ""
-        }
+
+        currentType = ""
+        token = ""
     }
     
 }
+    
 extension FoodCouponsVC{
     
     func start(){
+        started+=1
         connect.setConfigFromNetworkWithCompletion { (error) in
             if error == nil{
                 self.connect.start()
@@ -229,75 +212,24 @@ extension FoodCouponsVC{
             }
         }
     }
-    
-//    func send(){
-//        if str != ""{
-//            let time = connect.duration(forPayloadLength: 3)
-////            print(str)
-//            let data = Data(str.utf8)
-//            connect.send(data)
-//        }
-//    }
-
     func recieve(){
-        connect.receivedBlock = {
-            (data : Data?, channel: UInt?) -> () in
-            if let data = data {
-                print(String(data: data, encoding: .ascii)!)
-                if self.str == String(data: data, encoding: .ascii) ?? "NIL" && self.absent == false && self.currentlySelectedType != ""{
-                    print("MATCH")
+        if currentType != ""{
+            connect.receivedBlock = {
+                (data : Data?, channel: UInt?) -> () in
+                if let data = data {
+                    print(String(data: data, encoding: .ascii)!)
                     
-                        self.updateUser()
-                        
-                    
+                
+                    return;
                 }
-                else if self.currentlySelectedType == ""{
-                    print("Already selected")
-                }
-                else{
-                    print("Not MAtched")
-                }
-                return;
+            
             }
         }
     }
-    func updateUser(){
-        let ref = Database.database().reference().child("scannables").child(currentlySelectedType)
-        var arr = [JSON]()
-        var NSarr = [String]()
-        var json = JSON()
-        var dict:[String:String] = [:]
-       
-        ref.observe(.value) { (snap) in
-            json = JSON(snap.value)
-            self.ctr+=1
-            let val = snap.value as! Dictionary<String,AnyObject>
-            arr = json["couponsUserList"].arrayValue
-            arr.append(JSON(currentUser))
-            for i in 0...arr.count-1{
-                NSarr.append(arr[i].stringValue)
-                dict["\(i)"] = arr[i].stringValue
-                print(NSarr[i])
-                if self.ctr==1{
-                    self.send(dict: dict)
-                }
-            }}
-    }
     
-    
-
-    
-    func send(dict:[String:String]){
-        let ref = Database.database().reference().child("scannables").child(currentlySelectedType)
-        
-            ref.child("couponsUserList").setValue(dict, withCompletionBlock: { (e, ref) in
-                if e != nil{
-                    print(e!)
-                }
-            })
-        contentTableView.reloadData()
-            
+    func validate(){
         
     }
+    
 }
 

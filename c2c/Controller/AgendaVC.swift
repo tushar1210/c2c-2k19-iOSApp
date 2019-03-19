@@ -47,7 +47,7 @@ class AgendaVC: UIViewController {
                 self.startTimingArr.append(json["agendas"]["agendasList"][i]["startTime"].stringValue)
                 self.finishTimingArr.append(json["agendas"]["agendasList"][i]["endTime"].stringValue)
                 self.imgTypeArr.append(json["agendas"]["agendasList"][i]["type"].stringValue)
-                
+                self.dateArr.append(json["agendas"]["agendasList"][i]["date"].stringValue)
                 
             }
             print("Count",json.count)
@@ -86,7 +86,7 @@ extension AgendaVC:UITableViewDelegate,UITableViewDataSource{
         cell.typeLabel.textColor = .white
         cell.typeLabel.text = titleArr[indexPath.section]
         cell.timingLabel.text = startTimingArr[indexPath.section]+" - "+finishTimingArr[indexPath.section]
-        
+        cell.dateLabel.text = dateArr[indexPath.section]
         return cell
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -95,6 +95,6 @@ extension AgendaVC:UITableViewDelegate,UITableViewDataSource{
         return v
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
 }
