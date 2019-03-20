@@ -63,6 +63,7 @@ class AgendaVC: UIViewController {
          self.contentTableView.reloadData()
         }
     }
+    
 
     @objc func handleTap() {
         print("tapped")
@@ -91,6 +92,18 @@ extension AgendaVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "agenda") as! AgendaTableViewCell
         cell.isUserInteractionEnabled = false
+        
+        if imgTypeArr[indexPath.section] == "talk"{
+            cell.imageType.image = UIImage(named: "twotone-mic-24px")
+            
+        }
+        else if imgTypeArr[indexPath.section] == "food"{
+            cell.imageType.image = UIImage(named: "lunch")
+            
+        }else{
+            cell.imageType.image = UIImage(named: "AboutWhite")
+        }
+        
         cell.timingLabel.textColor = .white
         cell.typeLabel.textColor = .white
         cell.typeLabel.text = titleArr[indexPath.section]
