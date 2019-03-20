@@ -18,6 +18,7 @@ class PrizesVC: UIViewController {
     @IBOutlet weak var prizeLabel: UILabel!
     @IBOutlet weak var menuIcon: UIImageView!
     @IBOutlet weak var notification: UIImageView!
+    @IBOutlet weak var innovativeSolution: UILabel!
     
     
     var ctr = 0
@@ -30,10 +31,11 @@ class PrizesVC: UIViewController {
         prizeLabel.textColor = .white
         winnerLabel.textColor = .white
         second.textColor = .white
+        innovativeSolution.textColor = .white
         third.textColor = .white
         UI.textColor = .white
         bottomView.backgroundColor = UIColor.acmGreen()
- bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+ //bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         let ges = UITapGestureRecognizer(target: self, action: #selector(tap))
         notification.isUserInteractionEnabled = true
         notification.addGestureRecognizer(ges)

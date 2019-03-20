@@ -25,7 +25,7 @@ class SponsorsVC: UIViewController {
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
-        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+       // bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         contentTableView.delegate = self
         contentTableView.dataSource = self
         contentTableView.backgroundColor = .clear

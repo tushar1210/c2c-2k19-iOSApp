@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>We need to use your microphone for scanning goodies</string>
+	<string>Please allow us to use your Microphone Settings, inorder to scan and update the status of goodies and food coupons.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

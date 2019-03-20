@@ -54,7 +54,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
-        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+        //bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         contentTableView.delegate = self
         contentTableView.dataSource = self
         contentTableView.backgroundColor = .clear
@@ -263,6 +263,7 @@ extension FoodCouponsVC{
         print("Index",indexPath.section)
         let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
         if k==0{
+            
         k+=1
         token = tokenArr[indexPath.section]
         currentType=itemList[indexPath.section]
@@ -292,6 +293,7 @@ extension FoodCouponsVC{
             currentT=""
             contentTableView.reloadData()
         }
+        print(currentT)
 
     }
     

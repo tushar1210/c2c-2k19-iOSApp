@@ -21,13 +21,13 @@ class ViewController: UIViewController {
         emailTextField.frame.size.height = 45
         emailTextField.layer.cornerRadius = 23
         emailTextField.layer.masksToBounds = true
-        emailTextField.placeholder = "   Email"
+        emailTextField.placeholder = "Email"
         passwordTextField.layer.borderWidth = 1.0
         passwordTextField.layer.borderColor = UIColor(red: 57/255, green: 199/257, blue: 157/255, alpha: 1).cgColor
         passwordTextField.layer.cornerRadius = 23
         passwordTextField.frame.size.height = 45
         passwordTextField.layer.masksToBounds = true
-        passwordTextField.placeholder = "  Password"
+        passwordTextField.placeholder = "Password"
         passwordTextField.isSecureTextEntry = true
         loginButton.layer.cornerRadius = 23
         passwordTextField.clearsOnInsertion = false
@@ -55,6 +55,7 @@ class ViewController: UIViewController {
     }
     
     func validate(email:String,pass:String){
+        var s = 0
         for (key,subJson):(String,JSON) in self.json{
             print(json[key]["email"].stringValue)
             if email == json[key]["email"].stringValue && pass == json[key]["password"].stringValue{
@@ -63,12 +64,20 @@ class ViewController: UIViewController {
                 performSegue(withIdentifier: "go1", sender: nil)
                 
             }else{
+                s=1
+                
+                
                 passwordTextField.text = ""
                 emailTextField.isHighlighted=true
-                
-                
+                //alert.dismiss(animated: true, completion: nil)
                 defaults.set(false, forKey: "islogin")
             }
+        }
+        if s==1{
+            let alert = UIAlertController(title: "Invalid Credentials", message: "Please retry using valid credentials", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
