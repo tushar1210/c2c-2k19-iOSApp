@@ -46,6 +46,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var ip = [Int]()
     
     override func viewDidLoad() {
+        
         get()
         super.viewDidLoad()
         contentTableView.allowsMultipleSelection = false
@@ -148,6 +149,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     
     @IBAction func somethingWrong(_ sender: Any) {
     
+        performSegue(withIdentifier: "go9", sender: nil)
     }
 }
 

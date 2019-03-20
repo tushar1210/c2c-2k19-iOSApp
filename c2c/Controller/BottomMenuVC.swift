@@ -12,8 +12,8 @@ class BottomMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var contentTable: UITableView!
     
-    var labelArr = ["Agenda","Prizes","Food Coupons","Sponsors","About","FAQs","Logout"]
-    var whiteImages = ["heartWhite","trophyWhite","couponsWhite","SponsorsWhite","AboutWhite","FAQ White","logoutWhite"]
+    var labelArr = ["Agenda","Prizes","Food Coupons","Sponsors","About","Logout"]
+    var whiteImages = ["heartWhite","trophyWhite","couponsWhite","SponsorsWhite","AboutWhite","logoutWhite"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class BottomMenuVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
 extension BottomMenuVC{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return labelArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

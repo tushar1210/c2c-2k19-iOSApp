@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7828397E223E94A600C2BB72 /* ChirpConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7828397D223E94A600C2BB72 /* ChirpConnect.framework */; };
 		784AC72922425221009D89D5 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784AC72822425221009D89D5 /* NotificationVC.swift */; };
+		784AC72B2242A43B009D89D5 /* someThingWrongVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784AC72A2242A43B009D89D5 /* someThingWrongVC.swift */; };
 		784D342422400DDE0006EAFE /* Scannalbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D342322400DDE0006EAFE /* Scannalbles.swift */; };
 		784D3429224248760006EAFE /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D3428224248760006EAFE /* SponsorTableViewCell.swift */; };
 		784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED07D22398A0100B7C84C /* BottomCardSegue.swift */; };
@@ -37,6 +38,7 @@
 		547AD9AE6E277C03FC68E221 /* Pods-c2c.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-c2c.release.xcconfig"; path = "Pods/Target Support Files/Pods-c2c/Pods-c2c.release.xcconfig"; sourceTree = "<group>"; };
 		7828397D223E94A600C2BB72 /* ChirpConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChirpConnect.framework; sourceTree = "<group>"; };
 		784AC72822425221009D89D5 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		784AC72A2242A43B009D89D5 /* someThingWrongVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = someThingWrongVC.swift; sourceTree = "<group>"; };
 		784D342322400DDE0006EAFE /* Scannalbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scannalbles.swift; sourceTree = "<group>"; };
 		784D3428224248760006EAFE /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		784ED07D22398A0100B7C84C /* BottomCardSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSegue.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		7868A6AA2237DEF30048F21B = {
 			isa = PBXGroup;
 			children = (
+				784AC72A2242A43B009D89D5 /* someThingWrongVC.swift */,
 				7868A6B52237DEF30048F21B /* c2c */,
 				7868A6B42237DEF30048F21B /* Products */,
 				0FAA51FFEDEA45621DB6F1F7 /* Pods */,
@@ -315,6 +318,7 @@
 				7868A6B72237DEF30048F21B /* AppDelegate.swift in Sources */,
 				784D3429224248760006EAFE /* SponsorTableViewCell.swift in Sources */,
 				785C0128223A209700051E85 /* AlertsVC.swift in Sources */,
+				784AC72B2242A43B009D89D5 /* someThingWrongVC.swift in Sources */,
 				785C0130223A293E00051E85 /* FoodCoupons.swift in Sources */,
 				785C012C223A28F400051E85 /* AboutVC.swift in Sources */,
 				784ED084223A042100B7C84C /* AgendaVC.swift in Sources */,

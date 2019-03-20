@@ -37,6 +37,9 @@ class AlertsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func get(){
+        timeArr.removeAll()
+        bodyArr.removeAll()
+        headArr.removeAll()
         let ref = Database.database().reference().child("notification")
         ref.observe(.value) { (snap) in
             self.json = JSON(snap.value)
