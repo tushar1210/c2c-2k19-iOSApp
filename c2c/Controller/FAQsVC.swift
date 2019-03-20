@@ -12,6 +12,7 @@ class FAQsVC: UIViewController {
 
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var menuIcon: UIImageView!
+    @IBOutlet weak var notification: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +21,15 @@ class FAQsVC: UIViewController {
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
  bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+        let ges = UITapGestureRecognizer(target: self, action: #selector(tap))
+        notification.isUserInteractionEnabled = true
+        notification.addGestureRecognizer(ges)
+    }
+    @objc func tap(){
+        
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Alerts") as! AlertsVC
+        present(vc, animated: true, completion: nil)
     }
     
     

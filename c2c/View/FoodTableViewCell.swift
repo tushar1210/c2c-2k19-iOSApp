@@ -16,16 +16,19 @@ class FoodTableViewCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var sideView: UIView!
     
-    
+    var currentT = String()
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        typeLabel.text=""
-        timingLabel.text=""
-        statusLabel.text=""
+        sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+        statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
+        statusLabel.text = ""
+        typeLabel.text=" "
+        timingLabel.text=" "
+        statusLabel.text=" "
         sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         isUserInteractionEnabled = true
-        
+
     }
     
     override func awakeFromNib() {

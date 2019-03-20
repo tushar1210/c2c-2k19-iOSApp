@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7828397E223E94A600C2BB72 /* ChirpConnect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7828397D223E94A600C2BB72 /* ChirpConnect.framework */; };
+		784AC72922425221009D89D5 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784AC72822425221009D89D5 /* NotificationVC.swift */; };
 		784D342422400DDE0006EAFE /* Scannalbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D342322400DDE0006EAFE /* Scannalbles.swift */; };
+		784D3429224248760006EAFE /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784D3428224248760006EAFE /* SponsorTableViewCell.swift */; };
 		784ED07E22398A0100B7C84C /* BottomCardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED07D22398A0100B7C84C /* BottomCardSegue.swift */; };
 		784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED07F223993A000B7C84C /* BottomMenuVC.swift */; };
 		784ED08222399DFD00B7C84C /* BottomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784ED08122399DFD00B7C84C /* BottomTableCell.swift */; };
@@ -34,7 +36,9 @@
 /* Begin PBXFileReference section */
 		547AD9AE6E277C03FC68E221 /* Pods-c2c.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-c2c.release.xcconfig"; path = "Pods/Target Support Files/Pods-c2c/Pods-c2c.release.xcconfig"; sourceTree = "<group>"; };
 		7828397D223E94A600C2BB72 /* ChirpConnect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChirpConnect.framework; sourceTree = "<group>"; };
+		784AC72822425221009D89D5 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		784D342322400DDE0006EAFE /* Scannalbles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scannalbles.swift; sourceTree = "<group>"; };
+		784D3428224248760006EAFE /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		784ED07D22398A0100B7C84C /* BottomCardSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSegue.swift; sourceTree = "<group>"; };
 		784ED07F223993A000B7C84C /* BottomMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuVC.swift; sourceTree = "<group>"; };
 		784ED08122399DFD00B7C84C /* BottomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTableCell.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				78639DC022393C44006E916E /* PrizesVC.swift */,
 				785C0129223A24DC00051E85 /* SponsorsVC.swift */,
 				7868A6B82237DEF30048F21B /* ViewController.swift */,
+				784AC72822425221009D89D5 /* NotificationVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +117,7 @@
 				784ED08122399DFD00B7C84C /* BottomTableCell.swift */,
 				784ED07D22398A0100B7C84C /* BottomCardSegue.swift */,
 				78CDEE4F223CDDAC0028DD63 /* AlertCell.swift */,
+				784D3428224248760006EAFE /* SponsorTableViewCell.swift */,
 				788C5537223BBE3400AFD008 /* FoodTableViewCell.swift */,
 			);
 			path = View;
@@ -251,6 +257,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-c2c/Pods-c2c-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -259,6 +266,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -295,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78CDEE50223CDDAC0028DD63 /* AlertCell.swift in Sources */,
+				784AC72922425221009D89D5 /* NotificationVC.swift in Sources */,
 				784ED080223993A000B7C84C /* BottomMenuVC.swift in Sources */,
 				784D342422400DDE0006EAFE /* Scannalbles.swift in Sources */,
 				785C012E223A290B00051E85 /* FAQsVC.swift in Sources */,
@@ -304,6 +313,7 @@
 				7868A6B92237DEF30048F21B /* ViewController.swift in Sources */,
 				784ED08222399DFD00B7C84C /* BottomTableCell.swift in Sources */,
 				7868A6B72237DEF30048F21B /* AppDelegate.swift in Sources */,
+				784D3429224248760006EAFE /* SponsorTableViewCell.swift in Sources */,
 				785C0128223A209700051E85 /* AlertsVC.swift in Sources */,
 				785C0130223A293E00051E85 /* FoodCoupons.swift in Sources */,
 				785C012C223A28F400051E85 /* AboutVC.swift in Sources */,

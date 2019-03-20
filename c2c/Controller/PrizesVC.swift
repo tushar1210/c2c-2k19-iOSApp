@@ -17,6 +17,7 @@ class PrizesVC: UIViewController {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var prizeLabel: UILabel!
     @IBOutlet weak var menuIcon: UIImageView!
+    @IBOutlet weak var notification: UIImageView!
     
     
     var ctr = 0
@@ -33,7 +34,15 @@ class PrizesVC: UIViewController {
         UI.textColor = .white
         bottomView.backgroundColor = UIColor.acmGreen()
  bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+        let ges = UITapGestureRecognizer(target: self, action: #selector(tap))
+        notification.isUserInteractionEnabled = true
+        notification.addGestureRecognizer(ges)
+    }
+    @objc func tap(){
         
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Alerts") as! AlertsVC
+        present(vc, animated: true, completion: nil)
     }
     
     @objc func handleTap() {

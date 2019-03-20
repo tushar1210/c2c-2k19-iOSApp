@@ -13,6 +13,7 @@ class AgendaVC: UIViewController {
 
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var menuIcon: UIImageView!
+    @IBOutlet weak var notification: UIImageView!
     @IBOutlet weak var contentTableView: UITableView!
     
     var startTimingArr = [String]()
@@ -28,7 +29,9 @@ class AgendaVC: UIViewController {
         contentTableView.separatorStyle = .none
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-    
+        let ges = UITapGestureRecognizer(target: self, action: #selector(tap))
+        notification.isUserInteractionEnabled = true
+        notification.addGestureRecognizer(ges)
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
@@ -36,6 +39,11 @@ class AgendaVC: UIViewController {
         contentTableView.delegate = self
         contentTableView.dataSource = self
         
+    }
+    @objc func tap(){
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Alerts") as! AlertsVC
+        present(vc, animated: true, completion: nil)
     }
     
     func get(){
@@ -77,7 +85,7 @@ extension AgendaVC:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         print(titleArr.count)
-        return titleArr.count
+        return titleArr.count-2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

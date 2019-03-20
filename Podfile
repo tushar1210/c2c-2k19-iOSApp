@@ -11,4 +11,5 @@ pod 'Firebase/Database'
 #pod 'ChirpSDK' 
 pod 'SwiftyJSON'
 pod 'Firebase/Messaging'
+pod 'Kingfisher'
 end

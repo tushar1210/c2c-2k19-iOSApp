@@ -20,7 +20,9 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     @IBOutlet weak var contentTableView: UITableView!
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var somethingWrong: UIButton!
+    @IBOutlet weak var notification: UIImageView!
     
+    var k = 0
     var json = JSON()
     var itemList = [String]()
     var timingArrStart = [String]()
@@ -41,21 +43,33 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     var typeArr = [String]()
     var status = ""
     var userDict = [String:[String]]()
+    var ip = [Int]()
+    
     override func viewDidLoad() {
         get()
         super.viewDidLoad()
+        contentTableView.allowsMultipleSelection = false
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         menuIcon.isUserInteractionEnabled = true
         menuIcon.addGestureRecognizer(tapGesture)
         bottomView.backgroundColor = UIColor.acmGreen()
- bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+        bottomView.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         contentTableView.delegate = self
         contentTableView.dataSource = self
         contentTableView.backgroundColor = .clear
         contentTableView.separatorStyle = .none
         somethingWrong.titleLabel?.textColor = UIColor.acmGreen()
+        let ges = UITapGestureRecognizer(target: self, action: #selector(tap))
+        notification.isUserInteractionEnabled = true
+        notification.addGestureRecognizer(ges)
         
         
+    }
+    @objc func tap(){
+        
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Alerts") as! AlertsVC
+        present(vc, animated: true, completion: nil)
     }
     
     
@@ -64,6 +78,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         let childVC = storyboard!.instantiateViewController(withIdentifier: "BottomMenu")
         let segue = BottomCardSegue(identifier: nil, source: self, destination: childVC)
         prepare(for: segue, sender: nil)
+        connect.stop()
         segue.perform()
         
     }
@@ -98,17 +113,11 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
                 for i in 0...self.json["attendance"][key]["couponsUserList"].count-1{
                     self.userArr.append(self.json["attendance"][key]["couponsUserList"][i].stringValue)
                     self.attendance[key] = self.userArr
-
-                    
                 }
-                
-                
             }
             self.check()
             self.contentTableView.reloadData()
         }
-        
-        
     }
 
     func check(){
@@ -117,37 +126,24 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
                 for j in 0...attendance[keyArr[i]]!.count-1{
                     if currentUser != attendance[keyArr[i]]![j]{
                         isPresent = false
-                        
-                        
                     }
                     else{
                         isPresent = true
                     }
-                    
                 }
             if isPresent{
                 reedeemedArr.append(keyArr[i])
             }
-                
-            
-            
-            
         }
-        
-        
-        
     }
 
     @IBAction func micButton(_ sender: Any) {
         
-        if off && currentType != "" {
+        //if off && currentType != "" {
             start()
             
-        }
+       // }
             recieve()
-            
-        
-        
     }
     
     @IBAction func somethingWrong(_ sender: Any) {
@@ -173,7 +169,6 @@ extension FoodCouponsVC{
             connect.receivedBlock = {
                 (data : Data?, channel: UInt?) -> () in
                 if let data = data {
-                    print(String(data: data, encoding: .ascii)!)
                     self.tokenRecieved = String(data: data, encoding: .ascii)!
                     self.validate()
                     return;
@@ -190,9 +185,6 @@ extension FoodCouponsVC{
 
         if tokenRecieved != "" && token != "" && currentT != ""{
             var response = ""
-            
-            
-            
             for i in 0...attendance[currentT]!.count-1{
                 if currentUser != attendance[currentT]![i] && tokenRecieved==token{
                     status="ok"
@@ -204,14 +196,11 @@ extension FoodCouponsVC{
                 }
                 else{
                     status=""
-                    response = "Item Already Redeemed"
-                    print("already redeemed")
+                    response = "Item Already Redeemed or Wrong Token"
                     let alert = UIAlertController(title: "Response", message: response, preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                    
                 }
-                
             }
             if status == "ok"{
                 attendance[currentT]!.append(currentUser)
@@ -227,11 +216,8 @@ extension FoodCouponsVC{
                 typeArr.removeAll()
                 
             }
-
         }
-
     }
-    
 }
 
 extension FoodCouponsVC{
@@ -254,12 +240,9 @@ extension FoodCouponsVC{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTableView.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath) as! FoodTableViewCell
-        
-
-        print(reedeemedArr,keyArr)
-                
         cell.typeLabel.textColor = .white
         cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
         cell.backgroundColor=UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
@@ -267,22 +250,18 @@ extension FoodCouponsVC{
         cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
         cell.timingLabel.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.70)
         cell.selectionStyle = .none
-       
         if json.count>0{
-            
             cell.typeLabel.text = itemList[indexPath.section]
             cell.timingLabel.text = timingArrStart[indexPath.section]+" - "+timingArrEnd[indexPath.section]
             }
-
-        
-        
-        
         return cell
     }
-    
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Index",indexPath.section)
         let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
+        if k==0{
+        k+=1
         token = tokenArr[indexPath.section]
         currentType=itemList[indexPath.section]
         cell.sideView.backgroundColor = UIColor.acmGreen()
@@ -299,20 +278,21 @@ extension FoodCouponsVC{
         else{
             cell.statusLabel.text = "Redeem"
             cell.statusLabel.textColor = .white
+            }
+            
+        }else{
+            k=0
+            cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
+            cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
+            cell.statusLabel.text = ""
+            currentType = ""
+            token = ""
+            currentT=""
+            contentTableView.reloadData()
         }
-        print(currentT)
 
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = contentTableView.cellForRow(at: indexPath) as! FoodTableViewCell
-        cell.sideView.backgroundColor = UIColor(red: 173/255, green: 173/255, blue: 173/255, alpha: 1)
-        cell.statusLabel.textColor = UIColor(red: 77/255, green: 74/255, blue: 74/255, alpha: 1)
-        cell.statusLabel.text = ""
-        currentType = ""
-        token = ""
-        currentT=""
-    }
     
 }
     
