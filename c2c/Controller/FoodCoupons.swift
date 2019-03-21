@@ -6,7 +6,7 @@
 //  Copyright © 2019 Tushar Singh. All rights reserved.
 //
 var currentUser = "tushar1test@aws.com"
-var off=true
+var on=false
 
 import UIKit
 import ChirpConnect
@@ -140,10 +140,10 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 
     @IBAction func micButton(_ sender: Any) {
         
-        //if off && currentType != "" {
+        if !on && currentType != "" {
             start()
             
-       // }
+        }
             recieve()
     }
     
@@ -156,9 +156,9 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
 extension FoodCouponsVC{
     
     func start(){
-        off=false
+        on=true
         connect.setConfigFromNetworkWithCompletion { (error) in
-            if error == nil{
+            if error == nil && on {
                 self.connect.start()
             }
             else{
@@ -166,6 +166,9 @@ extension FoodCouponsVC{
             }
         }
     }
+    
+    
+    
     func recieve(){
         if currentType != ""{
             connect.receivedBlock = {
