@@ -80,6 +80,7 @@ class FoodCouponsVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         let segue = BottomCardSegue(identifier: nil, source: self, destination: childVC)
         prepare(for: segue, sender: nil)
         connect.stop()
+        on = false
         segue.perform()
         
     }
